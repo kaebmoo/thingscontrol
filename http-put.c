@@ -132,6 +132,7 @@ int main(void)
 
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);
+    printf("return code %d\n", res);
     /* Check for errors */
     if(res != CURLE_OK)
       fprintf(stderr, "curl_easy_perform() failed: %s\n",
