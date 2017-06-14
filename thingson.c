@@ -47,6 +47,7 @@
 #include <wiringPi.h> // Include WiringPi library!
 
 const int thingsOut = 17;
+int status_update(char *status);
 
 int main(int argc, char *argv[])
 {
