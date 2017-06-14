@@ -80,11 +80,11 @@ int main(int argc, char *argv[])
 
 	printf("On\n");
 	digitalWrite(thingsOut, HIGH);
-	update_status("ON");
+	status_update("ON");
 	delay(DELAY);
 	printf("Off\n");
 	digitalWrite(thingsOut, LOW);
-	update_status("OFF");
+	status_update("OFF");
 	
 	return 0;
 }
