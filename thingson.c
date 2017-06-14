@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 	int min; 
 
 	printf("argc %d\n", argc);
-	if (argc < 1) {
+	if (argc < 2) {
 		printf("Please input delay time (1-59 min.)\n");
 		exit(1);
 	}
