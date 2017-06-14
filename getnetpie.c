@@ -168,6 +168,9 @@ int main(void)
 	struct json_tokener *tok;
 	tok = json_tokener_new();
 	char *type_str;
+	
+	struct tm  ts;
+	char   lastUpdated[80];
 
 	do {
 		stringlen = strlen(chunk.memory);
@@ -227,7 +230,9 @@ int main(void)
 	printf("payload : %s\n", json_object_to_json_string(array));
 	
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "lastUpdated");
-	printf("payload : %d\n", json_object_get_int(array));
+	ts = *localtime(json_object_get_int(array));
+	strftime(lastUpdated, sizeof(lastUpdated), "%a %Y-%m-%d %H:%M:%S %Z", &ts);
+	printf("payload : %d, %s\n", json_object_get_int(array), lastUpdated);
 
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "retain");
 	printf("payload : %d\n", json_object_get_boolean(array));
