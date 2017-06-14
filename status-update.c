@@ -119,6 +119,7 @@ int main(void)
   alloc++;
   AppKey.param = malloc(alloc);
   AppKey.uri = malloc(strlen(uri)+strlen(app_id)+strlen(id)+strlen(topic)+strlen(param)+strlen(key)+strlen(":")+strlen(secret)+1);
+  AppKey.uri = "";
 
   strcpy(AppKey.key, key);
   strcpy(AppKey.secret, secret);
@@ -136,7 +137,7 @@ int main(void)
 
     AppKey.param = strcat(strcat(strcat(AppKey.param, AppKey.key),":"), AppKey.secret);
     AppKey.uri = strcat(strcat(strcat(strcat(strcat(AppKey.uri,uri), app_id), id), topic), AppKey.param);
-    printf("Parameter %s, \nuri %s\n", AppKey.param, AppKey.uri);
+    printf("Parameter %s \nuri %s\n", AppKey.param, AppKey.uri);
 
 	/*
     curl_easy_setopt(curl, CURLOPT_URL, "https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=SvZc5fyI9gpRaTv:tdyE0XGekaIi1orjaeHjBXGn2");
