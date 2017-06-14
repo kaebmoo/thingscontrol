@@ -60,7 +60,7 @@
 
 #include <libconfig.h>
 
-int main(void)
+int status_update(char *status)
 {
 	
 	config_t cfg;
@@ -86,6 +86,11 @@ int main(void)
   const char *id = "";		/* /seal */
   const char *topic = "";	/* /status?retain& */
   /* https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=SvZc5fyI9gpRaTv:tdyE0XGekaIi1orjaeHjBXGn2 */
+  char *update_status;
+  
+  update_status = malloc(strlen(status)) + 1;
+  strcpy(update_status, "");
+  strcpy(update_status, status);
 
   config_init(&cfg);
     /* Read the file. If there is an error, report it and exit. */
@@ -147,7 +152,7 @@ int main(void)
     /* Now specify the PUT data */
 
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "PUT");
-    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "ON");
+    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, update_status);
 
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);

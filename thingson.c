@@ -23,6 +23,22 @@
 
 */
 
+#include <curl/curl.h>
+ 
+
+#include <fcntl.h>
+#ifdef WIN32
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
+#include <sys/types.h>
+#include <sys/stat.h>
+
+
+#if LIBCURL_VERSION_NUM < 0x070c03
+#error "upgrade your libcurl to no less than 7.12.3"
+#endif
 
 #include <stdio.h>    // Used for printf() statements
 #include <string.h>
@@ -45,7 +61,12 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	DELAY = (int)  1000 * atoi(argv[1]);
+	if (atoi(argv[1] < 60) {
+		DELAY = (int) 1000 * 60 * ato(argv[1]); 
+	}
+	else {
+		DELAY = (int)  1000 * atoi(argv[1]);
+	}
 	printf("Delay %d, %s\n", DELAY, argv[1]);
  
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
@@ -53,9 +74,11 @@ int main(int argc, char *argv[])
 
 	printf("On\n");
 	digitalWrite(thingsOut, HIGH);
+	update_status("ON");
 	delay(DELAY);
 	printf("Off\n");
 	digitalWrite(thingsOut, LOW);
-
+	update_status("OFF");
+	
 	return 0;
 }
