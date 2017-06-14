@@ -64,8 +64,7 @@ int status_update(char *status)
 {
 	
 	config_t cfg;
-	config_setting_t *setting;
-	const char *str;
+
   
   CURL *curl;
   CURLcode res;
