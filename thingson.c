@@ -53,11 +53,8 @@ int main(int argc, char *argv[])
 {
 	int DELAY = 1000;
 	int min; 
-/*
-	while(argc--) {
-                printf("argc %d, argv %s\n", argc, *argv++);
-	}
-*/	
+
+	printf("argc %d\n", argc);
 	if (argc < 1) {
 		printf("Please input delay time (1-59 min.)\n");
 		exit(1);
