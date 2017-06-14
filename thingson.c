@@ -52,6 +52,7 @@ int status_update(char *status);
 int main(int argc, char *argv[])
 {
 	int DELAY = 1000;
+	int min; 
 /*
 	while(argc--) {
                 printf("argc %d, argv %s\n", argc, *argv++);
@@ -61,14 +62,18 @@ int main(int argc, char *argv[])
 		printf("Please input delay time (1-59 min.)\n");
 		exit(1);
 	}
+	
+	min = atoi(argv[1]); 
 
-	if (atoi(argv[1] < 60) {
-		DELAY = (int) 1000 * 60 * ato(argv[1]); 
+	if (min < 60) {
+		DELAY = (int) 1000 * 60 * min; 
+		printf("Delay %d min, %s\n", DELAY, argv[1]);
 	}
 	else {
-		DELAY = (int)  1000 * atoi(argv[1]);
+		DELAY = min;
+		printf("Delay %d second, %s\n", DELAY, argv[1]);
 	}
-	printf("Delay %d, %s\n", DELAY, argv[1]);
+	
  
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 	pinMode(thingsOut, OUTPUT);
