@@ -231,7 +231,7 @@ int main(void)
 	printf("payload : %s\n", json_object_to_json_string(array));
 	
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "lastUpdated");
-	ts = *localtime((time_t) json_object_get_int(array));
+	ts = localtime((time_t) json_object_get_int(array));
 	strftime(lastUpdated, sizeof(lastUpdated), "%a %Y-%m-%d %H:%M:%S %Z", &ts);
 	printf("payload : %d, %s\n", json_object_get_int(array), lastUpdated);
 
