@@ -24,6 +24,31 @@
  * chunk of memory instead of storing it in a file.
  * </DESC>
  */
+ 
+ /*
+    Things Control. Control anything you want.
+    Copyright (C) 2017  Pornthep Nivatyakul
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    ThingsControl  Copyright (C) 2017  Pornthep Nivatyakul, kaebmoo@gmail.com, seal@ogonan.com
+    This program comes with ABSOLUTELY NO WARRANTY;
+    This is free software, and you are welcome to redistribute it
+    under certain conditions.
+
+
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,6 +78,7 @@ void json_parse(json_object * jobj) {
         break;
  }
  }
+ 
 /*
  enum json_type type;
  json_object_object_foreach(jobj, key, val) {
@@ -67,8 +93,7 @@ void json_parse(json_object * jobj) {
 }
 
 
-static size_t
-WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
+static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
   size_t realsize = size * nmemb;
   struct MemoryStruct *mem = (struct MemoryStruct *)userp;
@@ -134,9 +159,7 @@ int main(void)
      */
     printf("%s\n", chunk.memory);
     printf("%lu bytes retrieved\n", (long)chunk.size);
-/*
-    json_object *jobj = json_tokener_parse(chunk.memory);
-*/
+
 	json_object *jobj;
 	json_object *array;
 	int stringlen = 0;
@@ -189,26 +212,32 @@ int main(void)
 	}
 	printf("Type %s\n", type_str);
 
-	/* array = json_object_new_array(); */
 
 	printf("new_obj.to_string()=%s\n", json_object_to_json_string(jobj));
-/*
-	json_object_object_get_ex(jobj, "", &array);
-*/
+
 	printf("array length %d\n", json_object_array_length(jobj));
 	for (i=0; i < json_object_array_length(jobj); i++) {
 		printf("%s\n", json_object_to_json_string(json_object_array_get_idx(jobj, i)));	
 	}
+
+	array = json_object_object_get(json_object_array_get_idx(jobj,0), "topic");
+	printf("payload : %s\n", json_object_to_json_string(array));
+	
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "payload");
 	printf("payload : %s\n", json_object_to_json_string(array));
+	
+	array = json_object_object_get(json_object_array_get_idx(jobj,0), "lastUpdated");
+	printf("payload : %d\n", json_object_to_json_int(array));
+
+	array = json_object_object_get(json_object_array_get_idx(jobj,0), "retain");
+	printf("payload : %d\n", json_object_to_json_boolean(array));
+
 	
 	/*
 	jobj = json_object_object_get(jobj, "payload");
 	printf("topic : %s\n", json_object_to_json_string(jobj));
 	*/
-    /*
-    json_parse(jobj); 
-    */
+
   }
 
   /* cleanup curl stuff */
