@@ -208,8 +208,8 @@
 			$out = shell_exec("/usr/bin/crontab -r");
 			echo $out;
 			$cron1 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - "; 
-			$cron2 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - ";
-			$cron3 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - ";
+			$cron2 = "(crontab -l 2>/dev/null; echo \"" . $time2 . "\") | crontab - ";
+			$cron3 = "(crontab -l 2>/dev/null; echo \"" . $time3 . "\") | crontab - ";
 			$out = shell_exec($cron1);
 			echo $out;
 			$out = shell_exec($cron2);
