@@ -119,7 +119,7 @@ int main(void)
   alloc++;
   AppKey.param = malloc(alloc);
   AppKey.uri = malloc(strlen(uri)+strlen(app_id)+strlen(id)+strlen(topic)+strlen(param)+strlen(key)+strlen(":")+strlen(secret)+1);
-  AppKey.uri = "";
+  strcpy(AppKey.uri, "");
 
   strcpy(AppKey.key, key);
   strcpy(AppKey.secret, secret);
