@@ -170,6 +170,10 @@
 			echo "All weekday is disabled.\n";
 		}
 		else {
+			$time1 = "";
+			$time2 = "";
+			$titme3 = "";
+			
 			//delete "," at the end of string. 
 			$set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";		
 			// if start time is enalbed. we set the weekday in crontab.
@@ -180,6 +184,7 @@
 				$cron_mm_hh = $MM . " " . $HH . " * * ";
 				$cron_weekday = $cron_mm_hh . $set_weekday;
 				echo $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";
+				$time1 = $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";
 					
 			}
 			
@@ -188,6 +193,7 @@
 				$cron_mm2_hh2 = $MM2 . " " . $HH2 . " * * ";
 				$cron_weekday = $cron_mm2_hh2 . $set_weekday;
 				echo $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";
+				$time2 = $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";
 						
 			}
 			if ($Enable3 == "true") {
@@ -195,8 +201,23 @@
 				$cron_mm3_hh3 = $MM3 . " " . $HH3 . " * * ";
 				$cron_weekday = $cron_mm3_hh3 . $set_weekday;
 				echo $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";	
+				$time3 = $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";
 						
-			}			
+			}		
+			/* crontab -r */
+			$out = shell_exec("/usr/bin/crontab -r");
+			echo $out;
+			$cron1 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - "; 
+			$cron2 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - ";
+			$cron3 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - ";
+			$out = shell_exec($cron1);
+			echo $out;
+			$out = shell_exec($cron2);
+			echo $out;
+			$out = shell_exec($cron3);
+			echo $out;
+			
+			/* (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab - */
 		}		
 		
 
