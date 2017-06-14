@@ -103,7 +103,7 @@ int main(void)
 		&& config_lookup_string(&cfg, "uri", &uri)
 		&& config_lookup_string(&cfg, "app_id", &app_id)
 		&& config_lookup_string(&cfg, "id", &id)
-		config_lookup_string(&cfg, "topic", &topic) ) {
+		&& config_lookup_string(&cfg, "topic", &topic) ) {
 	printf("key: %s %s %s %s %s %s %s\n\n", uri, app_id, id, topic, key, secret);
   }
   else
