@@ -66,8 +66,8 @@ int main(int argc, char *argv[])
 	min = atoi(argv[1]); 
 
 	if (min < 60) {
-		DELAY = (int) 1000 * 60 * min; 
-		printf("Delay %d min, %s\n", DELAY, argv[1]);
+		DELAY = (int) 60000 * min; 
+		printf("Delay %d min, %s\n", DELAY/60000, argv[1]);
 	}
 	else {
 		DELAY = min;
