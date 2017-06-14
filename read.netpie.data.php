@@ -171,7 +171,7 @@
 		}
 		else {
 			//delete "," at the end of string. 
-			$set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\n";		
+			$set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";		
 			// if start time is enalbed. we set the weekday in crontab.
 		
 			if ($Enable == "true") {				
@@ -179,7 +179,7 @@
 				//echo $MM . " " . $HH . " * * ";
 				$cron_mm_hh = $MM . " " . $HH . " * * ";
 				$cron_weekday = $cron_mm_hh . $set_weekday;
-				echo $cron_weekday . "/home/pi/bin/thingson" . $GLOBALS["OnTimer"];
+				echo $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";
 					
 			}
 			
@@ -187,14 +187,14 @@
 				$cron_weekday = "";
 				$cron_mm2_hh2 = $MM2 . " " . $HH2 . " * * ";
 				$cron_weekday = $cron_mm2_hh2 . $set_weekday;
-				echo $cron_weekday . . "/home/pi/bin/thingson" . $GLOBALS["OnTimer"];
+				echo $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";
 						
 			}
 			if ($Enable3 == "true") {
 				$cron_weekday = "";
 				$cron_mm3_hh3 = $MM3 . " " . $HH3 . " * * ";
 				$cron_weekday = $cron_mm3_hh3 . $set_weekday;
-				echo $cron_weekday . . "/home/pi/bin/thingson" . $GLOBALS["OnTimer"];	
+				echo $cron_weekday . "/home/pi/bin/thingson " . $GLOBALS["OnTimer"] . "\n";	
 						
 			}			
 		}		
