@@ -217,7 +217,7 @@
 			$out = shell_exec($cron3);
 			echo $out;
 			
-			/* (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab - */
+			// (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab - 
 		}		
 		
 
