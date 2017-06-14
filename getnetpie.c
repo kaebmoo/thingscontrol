@@ -227,10 +227,10 @@ int main(void)
 	printf("payload : %s\n", json_object_to_json_string(array));
 	
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "lastUpdated");
-	printf("payload : %d\n", json_object_to_json_int(array));
+	printf("payload : %d\n", json_object_get_int(array));
 
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "retain");
-	printf("payload : %d\n", json_object_to_json_boolean(array));
+	printf("payload : %d\n", json_object_get_boolean(array));
 
 	
 	/*
