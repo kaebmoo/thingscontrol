@@ -172,7 +172,7 @@
 		else {
 			$time1 = "";
 			$time2 = "";
-			$titme3 = "";
+			$time3 = "";
 			
 			//delete "," at the end of string. 
 			$set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";		
