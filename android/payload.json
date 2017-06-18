@@ -1,1 +1,8 @@
-{"Sun":"0","Mon":"1","Tue":"2","Wed":"3","Thu":"4","Fri":"5","Sat":"6","Enable":"1","Enable2":"1","Enable3":"1","HH":"00","MM":"00"}
+{"Sun":0,"Mon":1,"Tue":2,"Wed":3,"Thu":4,"Fri":5,"Sat":6,"Enable":true,"Enable2":true,"Enable3":true,
+
+"HH":0,"MM":0,
+"HH2":0,"MM2":0,
+"HH3":0,"MM3":0,
+
+"OnTimer":5
+}
