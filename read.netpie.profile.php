@@ -25,40 +25,36 @@
 */
         //include('./httpful.phar');
 
-        include "httpful.phar";
+    include "httpful.phar";
+    /*
 		$uri = "https://api.netpie.io/topic";
 		$app = "/ThingsControl";
 		$topic = "/seal";
 		$appkey = "SvZc5fyI9gpRaTv";
 		$appsecret = "tdyE0XGekaIi1orjaeHjBXGn2";
+    */
+
+    // Parse without sections
+    $ini_array = parse_ini_file("thingscontrol.conf");
+    $uri = $ini_array['uri'];
+    $app = $ini_array['app_id'];
+    $topic = $ini_array['id'];
+    $profile = $ini_array['profile'];
+    $param = $ini_array['param'];
+    $appkey = $ini_array['key'];
+    $appsecret = $ini_array['secret'];
+
+    //$uri_ = $uri . $app . $topic . $profile . $param . $key . ":" . $secret ;
+
 
 		$uri_start = $uri . $app  . $topic;
 		$uri_end = $appkey . ":" . $appsecret;
 
-    $uri_profile = $uri_start . "/profile?auth=" . $uri_end;
-
-    $uri_HH = $uri_start . "/HH?auth=" . $uri_end;
-		$uri_MM = $uri_start . "/MM?auth=" . $uri_end;
-    $uri_HH2 = $uri_start . "/HH2?auth=" . $uri_end;
-		$uri_MM2 = $uri_start . "/MM2?auth=" . $uri_end;
-    $uri_HH3 = $uri_start . "/HH3?auth=" . $uri_end;
-		$uri_MM3 = $uri_start . "/MM3?auth=" . $uri_end;
-		$uri_Enable = $uri_start . "/Enable?auth=" . $uri_end;
-		$uri_Enable2 = $uri_start . "/Enable2?auth=" . $uri_end;
-		$uri_Enable3 = $uri_start . "/Enable3?auth=" . $uri_end;
-
-		$uri_OnTimer = $uri_start . "/OnTimer?auth=" . $uri_end;
-
-		$uri_Sun = $uri_start . "/Sun?auth=" . $uri_end;
-		$uri_Mon = $uri_start . "/Mon?auth=" . $uri_end;
-		$uri_Tue = $uri_start . "/Tue?auth=" . $uri_end;
-		$uri_Wed = $uri_start . "/Wed?auth=" . $uri_end;
-		$uri_Thu = $uri_start . "/Thu?auth=" . $uri_end;
-		$uri_Fri = $uri_start . "/Fri?auth=" . $uri_end;
-		$uri_Sat = $uri_start . "/Sat?auth=" . $uri_end;
+    $uri_profile = $uri_start . $profile . $param . $uri_end;
+    echo $uri_profile . "\n";
 
 		echo "weekday " . date('w') . "\n";
-		$weekday = date('w');
+		$dayofweek = date('w');
 
     $profile = "";
     $HH = 0;
@@ -72,15 +68,17 @@
 		$Enable3 = "false";
 		$OnTimer = 5;
 
-		$array_uri = array($uri_HH, $uri_MM, $uri_HH2, $uri_MM2, $uri_HH3, $uri_MM3, $uri_Enable, $uri_Enable2, $uri_Enable3, $uri_OnTimer);
-		$var_time = array($HH, $MM, $HH2, $MM2, $HH3, $MM3, $Enable, $Enable2, $Enable3, $OnTimer);
-		$var_name = array("HH","MM","HH2","MM2","HH3","MM3","Enable","Enable2","Enable3","OnTimer");
-		$lastUpdated = [];
+		//$array_uri = array($uri_HH, $uri_MM, $uri_HH2, $uri_MM2, $uri_HH3, $uri_MM3, $uri_Enable, $uri_Enable2, $uri_Enable3, $uri_OnTimer);
+		//$var_time = array($HH, $MM, $HH2, $MM2, $HH3, $MM3, $Enable, $Enable2, $Enable3, $OnTimer);
+		//$var_name = array("HH","MM","HH2","MM2","HH3","MM3","Enable","Enable2","Enable3","OnTimer");
+		//$lastUpdated = [];
 
     $try = 0;
     do {
-      if ($try > 2)
-        break;
+      if ($try > 2) {
+        echo "\n" . "Error code = " . json_decode($response->code, true);
+        exit;
+      }
       $response = \Httpful\Request::get($uri_profile)->send();
       echo ".";
       sleep(1);
@@ -175,8 +173,8 @@
 		$Fri = "false";
 		$Sat = "false";
 
-		$array_weekday = array($uri_Sun, $uri_Mon, $uri_Tue, $uri_Wed, $uri_Thu, $uri_Fri, $uri_Sat);
-		$weekday = array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+		//$array_weekday = array($uri_Sun, $uri_Mon, $uri_Tue, $uri_Wed, $uri_Thu, $uri_Fri, $uri_Sat);
+		//$weekday = array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
 		$var_weekday = array($Sun,$Mon,$Tue,$Wed,$Thu,$Fri,$Sat);
 
 
@@ -188,7 +186,7 @@
         else {
           $var_weekday[$i] = substr($profile, $i, 1);
         }
-        echo $var_weekday[$i] . "\n";
+        //echo $var_weekday[$i] . "\n";
     }
 
     /*
