@@ -62,6 +62,8 @@
 
 #include <libconfig.h>
 
+#include <wiringPi.h> // Include WiringPi library!
+
 struct MemoryStruct {
   char *memory;
   size_t size;
