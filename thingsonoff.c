@@ -189,7 +189,7 @@ int read_config()
   return 0;
 }
 
-int get_status()
+int get_control_status()
 {
 
   CURL *curl_handle;
@@ -360,6 +360,8 @@ int get_status()
 
 const int thingsOut = 17;
 
+int status_update(char *status);
+
 int main(void)
 {
   int status;
@@ -369,13 +371,15 @@ int main(void)
 
   // must be read config before get status.
   if (read_config() == 0) {
-    status = get_status();
-    printf("status = %d\n", status);
+    status = get_control_status();
+    printf("control status = %d\n", status);
     if (status == 1) {
       digitalWrite(thingsOut, HIGH);
+      status_update("ON");
     }
     else {
       digitalWrite(thingsOut, LOW);
+      status_update("OFF");
     }
   }
 
