@@ -68,6 +68,7 @@ int status_update(char *status)
 
   CURL *curl;
   CURLcode res;
+
   typedef struct {
 		char *key;
 		char *secret;

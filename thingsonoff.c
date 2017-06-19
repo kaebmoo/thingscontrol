@@ -295,9 +295,8 @@ int get_status()
 	}
 	printf("Type %s\n", type_str);
 
-
+  int i;
 	printf("new_obj.to_string()=%s\n", json_object_to_json_string(jobj));
-
 	printf("array length %d\n", json_object_array_length(jobj));
 	for (i=0; i < json_object_array_length(jobj); i++) {
 		printf("%s\n", json_object_to_json_string(json_object_array_get_idx(jobj, i)));
