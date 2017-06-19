@@ -51,7 +51,7 @@
 		$uri_end = $appkey . ":" . $appsecret;
 
     $uri_profile = $uri_start . $profile . $param . $uri_end;
-    echo $uri_profile . "\n";
+    //echo $uri_profile . "\n";
 
 		echo "weekday " . date('w') . "\n";
 		$dayofweek = date('w');
