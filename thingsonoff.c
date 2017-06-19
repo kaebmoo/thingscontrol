@@ -157,7 +157,7 @@ int read_config()
 		&& config_lookup_string(&cfg, "app_id", &app_id)
 		&& config_lookup_string(&cfg, "id", &id)
 		&& config_lookup_string(&cfg, "topic", &topic) ) {
-	     printf("key: %s %s %s %s %s %s\n\n", uri, app_id, id, topic, key, secret);
+	     printf("key: %s %s %s %s %s %s\n", uri, app_id, id, topic, key, secret);
   }
   else {
     fprintf(stderr, "No 'key' setting in configuration file.\n");
@@ -181,7 +181,8 @@ int read_config()
 
     AppKey.param = strcat(strcat(strcat(AppKey.param, AppKey.key),":"), AppKey.secret);
     AppKey.uri = strcat(strcat(strcat(strcat(strcat(AppKey.uri,uri), app_id), id), topic), AppKey.param);
-    printf("Parameter %s \nuri %s\n", AppKey.param, AppKey.uri);
+    //printf("Parameter %s \nuri %s\n", AppKey.param, AppKey.uri);
+    printf("uri: %s\n", AppKey.uri);
 
   return 0;
 }
@@ -268,6 +269,7 @@ int get_status()
         // e.g. issue an error, parse another object from that point, etc...
 	}
 
+  /*
 	jtype = json_object_get_type(jobj);
 	switch(jtype) {
 		case json_type_null:
@@ -294,13 +296,16 @@ int get_status()
 		  break;
 	}
 	printf("Type %s\n", type_str);
+  */
 
+  /*
   int i;
 	printf("new_obj.to_string()=%s\n", json_object_to_json_string(jobj));
 	printf("array length %d\n", json_object_array_length(jobj));
 	for (i=0; i < json_object_array_length(jobj); i++) {
 		printf("%s\n", json_object_to_json_string(json_object_array_get_idx(jobj, i)));
 	}
+  */
 
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "topic");
 	printf("payload : %s\n", json_object_to_json_string(array));
