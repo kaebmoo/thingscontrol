@@ -159,7 +159,7 @@ int read_config()
 		&& config_lookup_string(&cfg, "app_id", &app_id)
 		&& config_lookup_string(&cfg, "id", &id)
 		&& config_lookup_string(&cfg, "control", &topic) ) {
-	     printf("key: %s %s %s %s %s %s\n", uri, app_id, id, topic, key, secret);
+	     //printf("key: %s %s %s %s %s %s\n", uri, app_id, id, topic, key, secret);
   }
   else {
     fprintf(stderr, "No 'key' setting in configuration file.\n");
@@ -184,7 +184,7 @@ int read_config()
     AppKey.param = strcat(strcat(strcat(AppKey.param, AppKey.key),":"), AppKey.secret);
     AppKey.uri = strcat(strcat(strcat(strcat(strcat(AppKey.uri,uri), app_id), id), topic), AppKey.param);
     //printf("Parameter %s \nuri %s\n", AppKey.param, AppKey.uri);
-    printf("uri: %s\n", AppKey.uri);
+    //printf("uri: %s\n", AppKey.uri);
 
   return 0;
 }
