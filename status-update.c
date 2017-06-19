@@ -24,7 +24,7 @@
 	Copyright (C) 2005-2010  Mark A Lindner
 
 	This file is part of libconfig.
-	
+
  *                                  _   _ ____  _
  *  Project                     ___| | | |  _ \| |
  *                             / __| | | | |_) | |
@@ -62,17 +62,17 @@
 
 int status_update(char *status)
 {
-	
+
 	config_t cfg;
 
-  
+
   CURL *curl;
   CURLcode res;
   typedef struct {
-	char *key;
-	char *secret;
-	char *param;
-	char *uri;
+		char *key;
+		char *secret;
+		char *param;
+		char *uri;
   } app_key;
 
   app_key AppKey;
@@ -86,7 +86,7 @@ int status_update(char *status)
   const char *topic = "";	/* /status?retain& */
   /* https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=SvZc5fyI9gpRaTv:tdyE0XGekaIi1orjaeHjBXGn2 */
   char *update_status;
-  
+
   update_status = malloc(strlen(status)) + 1;
   strcpy(update_status, "");
   strcpy(update_status, status);
@@ -101,8 +101,8 @@ int status_update(char *status)
     return(EXIT_FAILURE);
   }
     /* Get the store name. */
-  if(config_lookup_string(&cfg, "key", &key) 
-		&& config_lookup_string(&cfg, "secret", &secret) 
+  if(config_lookup_string(&cfg, "key", &key)
+		&& config_lookup_string(&cfg, "secret", &secret)
 		&& config_lookup_string(&cfg, "param", &param)
 		&& config_lookup_string(&cfg, "uri", &uri)
 		&& config_lookup_string(&cfg, "app_id", &app_id)
@@ -114,7 +114,7 @@ int status_update(char *status)
     fprintf(stderr, "No 'key' setting in configuration file.\n");
 
 
-  
+
   int alloc = 0;
 
   AppKey.key = malloc(strlen(key)+1);
@@ -156,7 +156,7 @@ int status_update(char *status)
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);
     printf("return code %d\n", res);
-	
+
     /* Check for errors */
     if(res != CURLE_OK)
       fprintf(stderr, "curl_easy_perform() failed: %s\n",
@@ -173,4 +173,3 @@ int status_update(char *status)
 
   return 0;
 }
-

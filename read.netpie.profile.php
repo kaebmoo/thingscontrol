@@ -68,10 +68,6 @@
 		$Enable3 = "false";
 		$OnTimer = 5;
 
-		//$array_uri = array($uri_HH, $uri_MM, $uri_HH2, $uri_MM2, $uri_HH3, $uri_MM3, $uri_Enable, $uri_Enable2, $uri_Enable3, $uri_OnTimer);
-		//$var_time = array($HH, $MM, $HH2, $MM2, $HH3, $MM3, $Enable, $Enable2, $Enable3, $OnTimer);
-		//$var_name = array("HH","MM","HH2","MM2","HH3","MM3","Enable","Enable2","Enable3","OnTimer");
-		//$lastUpdated = [];
 
     $try = 0;
     do {
@@ -124,47 +120,6 @@
     echo $OnTimer . "\n";
     //exit;
 
-/*
-		$i_var_time = 0;
-		foreach($array_uri as $uri) {
-			$try = 0;
-			do {
-				if ($try > 2)
-					break;
-				$response = \Httpful\Request::get($uri)->send();
-				echo ".";
-				sleep(1);
-				$try++;
-
-			} while (json_decode($response->code, true) != 200);
-			$result = json_decode($response->body, true);
-			$var_time[$i_var_time] = $result[0]['payload'];
-			$lastUpdated[$i_var_time] = date('r', $result[0]['lastUpdated']);
-			$i_var_time++;
-		}
-		echo "\n";
-*/
-
-
-		//$i_var_time = 0;
-		//foreach($var_name as $VariableName) {
-		//	$GLOBALS[$VariableName] = $var_time[$i_var_time++];
-		//	echo $var_name[$i_var_time-1] . " = " . $GLOBALS[$VariableName] . "\t| Last Updated " . $lastUpdated[$i_var_time-1] . "\n";
-		//}
-		//echo "HH = " . $HH . "\n";
-		//echo "MM = " . $MM . "\n";
-
-
-        //echo $response . "\n" ;
-
-		//$response = \Httpful\Request::get($uri_Enable)->send();
-		//$result = json_decode($response->body, true);
-		//echo "Enable = " . $result[0]['payload'] . "\n";
-		//$Enable = $result[0]['payload'];
-		//sleep(1);
-        //echo $response . "\n" ;
-
-
 		$Sun = "false";
 		$Mon = "false";
 		$Tue = "false";
@@ -173,8 +128,6 @@
 		$Fri = "false";
 		$Sat = "false";
 
-		//$array_weekday = array($uri_Sun, $uri_Mon, $uri_Tue, $uri_Wed, $uri_Thu, $uri_Fri, $uri_Sat);
-		//$weekday = array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
 		$var_weekday = array($Sun,$Mon,$Tue,$Wed,$Thu,$Fri,$Sat);
 
 
@@ -188,29 +141,6 @@
         }
         //echo $var_weekday[$i] . "\n";
     }
-
-    /*
-		$i = 0;
-		foreach($array_weekday as $value) {
-			$try = 0;
-			do {
-				if ($try > 2)
-					break;
-				$response = \Httpful\Request::get($value)->send();
-				sleep(1);
-
-				$try++;
-
-			} while (json_decode($response->code, true) != 200);
-			$result = json_decode($response->body, true);
-			$var_weekday[$i] = $result[0]['payload'];
-			$lastUpdated[$i] = date('r', $result[0]['lastUpdated']);
-
-			echo $weekday[$i] . " = " . $var_weekday[$i] . "\t| " . $lastUpdated[$i] . "\n";
-			//echo $response . "\n" ;
-			$i++;
-		}
-    */
 
 		$set_weekday = "";
 		for ($i = 0; $i < 7; $i++) {
