@@ -30,8 +30,8 @@
 		$uri = "https://api.netpie.io/topic";
 		$app = "/ThingsControl";
 		$topic = "/seal";
-		$appkey = "SvZc5fyI9gpRaTv";
-		$appsecret = "tdyE0XGekaIi1orjaeHjBXGn2";
+		$appkey = "key";
+		$appsecret = "secret";
     */
 
     // Parse without sections

@@ -1,4 +1,4 @@
-// curl -X PUT "https://api.netpie.io/topic/ThingsControl/seal/profile?retain&auth=SvZc5fyI9gpRaTv:tdyE0XGekaIi1orjaeHjBXGn2" -d "0123456TTT06060607070801"
+// curl -X PUT "https://api.netpie.io/topic/ThingsControl/seal/profile?retain&auth=key:secret" -d "0123456TTT06060607070801"
 
 /***************************************************************************
  *                                  _   _ ____  _
@@ -139,7 +139,7 @@ int read_config()
   const char *app_id = ""; 	/* /ThingsControl */
   const char *id = "";		/* /seal */
   const char *topic = "";	/* /status?retain& */
-  /* https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=SvZc5fyI9gpRaTv:tdyE0XGekaIi1orjaeHjBXGn2 */
+  /* https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=key:secret */
 
 
   config_init(&cfg);
@@ -208,7 +208,7 @@ int get_control_status()
   curl_handle = curl_easy_init();
 
   /* specify URL to get */
-  // curl_easy_setopt(curl_handle, CURLOPT_URL, "https://api.netpie.io/topic/ThingsControl/seal/status?auth=SvZc5fyI9gpRaTv:tdyE0XGekaIi1orjaeHjBXGn2");
+  // curl_easy_setopt(curl_handle, CURLOPT_URL, "https://api.netpie.io/topic/ThingsControl/seal/status?auth=key:secret");
   curl_easy_setopt(curl_handle, CURLOPT_URL, AppKey.uri);
 
   /* send all data to this function  */

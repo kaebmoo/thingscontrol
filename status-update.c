@@ -85,7 +85,7 @@ int status_update(char *status)
   const char *app_id = ""; 	/* /ThingsControl */
   const char *id = "";		/* /seal */
   const char *topic = "";	/* /status?retain& */
-  /* https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=SvZc5fyI9gpRaTv:tdyE0XGekaIi1orjaeHjBXGn2 */
+  /* https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=key:secret */
   char *update_status;
 
   update_status = malloc(strlen(status)) + 1;
@@ -145,7 +145,7 @@ int status_update(char *status)
     //printf("Parameter %s \nuri %s\n", AppKey.param, AppKey.uri);
 
 	/*
-    curl_easy_setopt(curl, CURLOPT_URL, "https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=SvZc5fyI9gpRaTv:tdyE0XGekaIi1orjaeHjBXGn2");
+    curl_easy_setopt(curl, CURLOPT_URL, "https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=key:secret");
     */
     curl_easy_setopt(curl, CURLOPT_URL, AppKey.uri);
 
