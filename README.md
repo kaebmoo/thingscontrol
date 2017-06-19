@@ -1,5 +1,5 @@
 # thingscontrol
-Things Control - control anything you want.
+Things Control - control anything as you want.
 
 netpie.io rest api example
 from this api https://github.com/netpieio/microgear-restapi
