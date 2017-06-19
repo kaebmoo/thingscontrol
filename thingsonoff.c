@@ -156,7 +156,7 @@ int read_config()
 		&& config_lookup_string(&cfg, "uri", &uri)
 		&& config_lookup_string(&cfg, "app_id", &app_id)
 		&& config_lookup_string(&cfg, "id", &id)
-		&& config_lookup_string(&cfg, "topic", &topic) ) {
+		&& config_lookup_string(&cfg, "control", &topic) ) {
 	     printf("key: %s %s %s %s %s %s\n", uri, app_id, id, topic, key, secret);
   }
   else {
@@ -355,14 +355,26 @@ int get_status()
     return(status);
 }
 
+
+const int thingsOut = 17;
+
 int main(void)
 {
   int status;
+
+  wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
+  pinMode(thingsOut, OUTPUT);
 
   // must be read config before get status.
   if (read_config() == 0) {
     status = get_status();
     printf("status = %d\n", status);
+    if (status == 1) {
+      digitalWrite(thingsOut, HIGH);
+    }
+    else {
+      digitalWrite(thingsOut, LOW);
+    }
   }
 
   return 0;
