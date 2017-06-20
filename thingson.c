@@ -1,6 +1,6 @@
 /*
-    Things Control. Control anything you want.
-    Copyright (C) 2017  Pornthep Nivatyakul 
+    Things Control. Control anything as you want.
+    Copyright (C) 2017  Pornthep Nivatyakul
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-    ThingsControl  Copyright (C) 2017  Pornthep Nivatyakul, kaebmoo@gmail.com, seal@ogonan.com  
+    ThingsControl  Copyright (C) 2017  Pornthep Nivatyakul, kaebmoo@gmail.com, seal@ogonan.com
     This program comes with ABSOLUTELY NO WARRANTY;
     This is free software, and you are welcome to redistribute it
     under certain conditions.
@@ -24,7 +24,7 @@
 */
 
 #include <curl/curl.h>
- 
+
 
 #include <fcntl.h>
 #ifdef WIN32
@@ -46,32 +46,33 @@
 
 #include <wiringPi.h> // Include WiringPi library!
 
-const int thingsOut = 17;
+const int thingsOut = 16; /* automation phat BCM 16 GPIO 27 physical 36 */
+
 int status_update(char *status);
 
 int main(int argc, char *argv[])
 {
 	int DELAY = 1000;
-	int min; 
+	int min;
 
 	printf("argc %d\n", argc);
 	if (argc < 2) {
 		printf("Please input delay time (1-59 min.)\n");
 		exit(1);
 	}
-	
-	min = atoi(argv[1]); 
+
+	min = atoi(argv[1]);
 
 	if (min < 60) {
-		DELAY = (int) 60000 * min; 
+		DELAY = (int) 60000 * min;
 		printf("Delay %d min, %s\n", DELAY/60000, argv[1]);
 	}
 	else {
 		DELAY = min;
 		printf("Delay %d second, %s\n", DELAY, argv[1]);
 	}
-	
- 
+
+
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 	pinMode(thingsOut, OUTPUT);
 
@@ -82,6 +83,6 @@ int main(int argc, char *argv[])
 	printf("Off\n");
 	digitalWrite(thingsOut, LOW);
 	status_update("OFF");
-	
+
 	return 0;
 }

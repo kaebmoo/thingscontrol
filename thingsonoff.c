@@ -28,7 +28,7 @@
  */
 
  /*
-    Things Control. Control anything you want.
+    Things Control. Control anything as you want.
     Copyright (C) 2017  Pornthep Nivatyakul
 
     This program is free software: you can redistribute it and/or modify
@@ -358,7 +358,7 @@ int get_control_status()
 }
 
 
-const int thingsOut = 17;
+const int thingsOut = 16; /* automation phat BCM 16 GPIO 27 physical 36 */
 
 int status_update(char *status);
 

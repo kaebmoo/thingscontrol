@@ -175,3 +175,22 @@ int status_update(char *status)
 
   return 0;
 }
+
+
+const int RELAY = 16; /* automation phat BCM 16 GPIO 27 physical 36 */
+
+int main()
+{
+	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
+	if (digitalRead(RELAY) == 1)
+	{
+			printf("Relay Status: ON \n");
+			status_update("ON");
+	}
+	else if (digitalRead(RELAY) == 0) {
+		printf("Relay Status: OFF \n");
+		status_update("OFF");
+	}
+
+	return 0;
+}

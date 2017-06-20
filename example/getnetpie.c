@@ -24,9 +24,9 @@
  * chunk of memory instead of storing it in a file.
  * </DESC>
  */
- 
+
  /*
-    Things Control. Control anything you want.
+    Things Control. Control anything as you want.
     Copyright (C) 2017  Pornthep Nivatyakul
 
     This program is free software: you can redistribute it and/or modify
@@ -69,17 +69,17 @@ void json_parse(json_object * jobj) {
  json_object_object_foreach(jobj, key, val) {
  type = json_object_get_type(val);
  switch (type) {
- case json_type_string: 
+ case json_type_string:
 	printf("type: json_type_string, ");
  	printf("value: %s\n", json_object_get_string(val));
  	break;
- case json_type_int: 
+ case json_type_int:
 	printf("type: json_type_int, ");
         printf("value: %d\n", json_object_get_int(val));
         break;
  }
  }
- 
+
 /*
  enum json_type type;
  json_object_object_foreach(jobj, key, val) {
@@ -169,7 +169,7 @@ int main(void)
 	struct json_tokener *tok;
 	tok = json_tokener_new();
 	char *type_str;
-	
+
 	time_t     now;
 	struct tm  ts;
 	char   lastUpdated[80];
@@ -222,15 +222,15 @@ int main(void)
 
 	printf("array length %d\n", json_object_array_length(jobj));
 	for (i=0; i < json_object_array_length(jobj); i++) {
-		printf("%s\n", json_object_to_json_string(json_object_array_get_idx(jobj, i)));	
+		printf("%s\n", json_object_to_json_string(json_object_array_get_idx(jobj, i)));
 	}
 
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "topic");
 	printf("payload : %s\n", json_object_to_json_string(array));
-	
+
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "payload");
 	printf("payload : %s\n", json_object_to_json_string(array));
-	
+
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "lastUpdated");
 	now = json_object_get_int(array);
 	ts = *localtime((const time_t *) &now);
@@ -240,7 +240,7 @@ int main(void)
 	array = json_object_object_get(json_object_array_get_idx(jobj,0), "retain");
 	printf("payload : %d\n", json_object_get_boolean(array));
 
-	
+
 	/*
 	jobj = json_object_object_get(jobj, "payload");
 	printf("topic : %s\n", json_object_to_json_string(jobj));

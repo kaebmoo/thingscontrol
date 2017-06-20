@@ -25,7 +25,7 @@
  */
 
 /*
-    Things Control. Control anything you want.
+    Things Control. Control anything as you want.
     Copyright (C) 2017  Pornthep Nivatyakul
 
     This program is free software: you can redistribute it and/or modify
@@ -149,4 +149,3 @@ int main(void)
 
   return 0;
 }
-
