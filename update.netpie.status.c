@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
 
 	printf("argc: %d\n", argc);
 	if (argc < 2) {
-		printf("[Usage: %s 5, Please input delay time (1 - 60 second)\n", argv[0]);
+		printf("Usage: %s 5\nPlease input delay time (1 - 60 second)\n", argv[0]);
 		exit(1);
 	}
 
