@@ -54,13 +54,14 @@
 
     $uri_profile = $uri_start . $profile . $param . $uri_end;
     //echo $uri_profile . "\n";
+
     $fp = fsockopen("udp://8.8.8.8", 53, $errno, $errstr);
     if (!$fp) {
       echo "ERROR: $errno - $errstr<br />\n";
-      exit;
+      exit(1);
     }
 
-//for (;;) {
+for (;;) {
 		echo "weekday " . date('w') . "\n";
 		$dayofweek = date('w');
 
@@ -81,7 +82,7 @@
     do {
       if ($try > 2) {
         echo "\n" . "Error code = " . json_decode($response->code, true);
-        exit;
+        exit(2);
       }
       try {
         $response = \Httpful\Request::get($uri_profile)->send();
@@ -133,7 +134,7 @@
     echo $HH . ":" . $MM . " " . $HH2 . ":" . $MM2 . " " . $HH3 . ":" . $MM3 . "\n";
     echo $Enable . " " . $Enable2 . " " . $Enable3 . "\n";
     echo $OnTimer . "\n";
-    //exit;
+    
 
 		$Sun = "false";
 		$Mon = "false";
@@ -223,8 +224,8 @@
       }
 			// (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab -
 		}
-//    sleep(5);
-//}
+    sleep(5);
+}
 
 
 ?>
