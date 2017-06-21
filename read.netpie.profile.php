@@ -53,7 +53,7 @@
     $uri_profile = $uri_start . $profile . $param . $uri_end;
     //echo $uri_profile . "\n";
 
-for (;;) {
+//for (;;) {
 		echo "weekday " . date('w') . "\n";
 		$dayofweek = date('w');
 
@@ -191,7 +191,7 @@ for (;;) {
 			}
 
       if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-        
+
       }
       else {
       /* crontab -r */
@@ -209,8 +209,8 @@ for (;;) {
       }
 			// (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab -
 		}
-    sleep(5);
-}
+//    sleep(5);
+//}
 
 
 ?>
