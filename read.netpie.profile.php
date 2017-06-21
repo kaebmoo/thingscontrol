@@ -89,6 +89,7 @@ for (;;) {
       }
       catch(Exception $e) {
         echo 'Message: ' . $e->getMessage();
+        exit(1);
       }
       echo ".";
       sleep(1);
@@ -134,7 +135,7 @@ for (;;) {
     echo $HH . ":" . $MM . " " . $HH2 . ":" . $MM2 . " " . $HH3 . ":" . $MM3 . "\n";
     echo $Enable . " " . $Enable2 . " " . $Enable3 . "\n";
     echo $OnTimer . "\n";
-    
+
 
 		$Sun = "false";
 		$Mon = "false";
