@@ -94,7 +94,7 @@ int status_update(char *status)
 
   config_init(&cfg);
     /* Read the file. If there is an error, report it and exit. */
-  if(! config_read_file(&cfg, "thingscontrol.conf"))
+  if(! config_read_file(&cfg, "/home/pi/thingscontrol/thingscontrol.conf"))
   {
     fprintf(stderr, "%s:%d - %s\n", config_error_file(&cfg),
             config_error_line(&cfg), config_error_text(&cfg));
