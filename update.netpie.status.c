@@ -179,8 +179,24 @@ int status_update(char *status)
 
 const int RELAY = 16; /* automation phat BCM 16 GPIO 27 physical 36 */
 
-int main()
+int main(int argc, char *argv[])
 {
+	int DELAY;
+
+	printf("argc: %d\n", argc);
+	if (argc < 2) {
+		printf("[Usage: %s 5, Please input delay time (1 - 60 second)\n", argv[0]);
+		exit(1);
+	}
+
+	DELAY = atoi(argv[1]);
+	if (DELAY > 60 || DELAY < 1)
+		DELAY = 1;
+
+	DELAY = DELAY * 1000;
+
+	printf("Status update every %d sec.\n", DELAY/1000);
+
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 
 	for(;;) {
@@ -193,7 +209,7 @@ int main()
 			printf("Relay Status: OFF \n");
 			status_update("OFF");
 		}
-		delay(1000);
+		delay(DELAY);
 	}
 	return 0;
 }
