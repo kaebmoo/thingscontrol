@@ -53,6 +53,7 @@
     $uri_profile = $uri_start . $profile . $param . $uri_end;
     //echo $uri_profile . "\n";
 
+for (;;) {
 		echo "weekday " . date('w') . "\n";
 		$dayofweek = date('w');
 
@@ -92,7 +93,6 @@
     $MM = substr($profile, 12, 2);
     $HH2 = substr($profile, 14, 2);
     $MM2 = substr($profile, 16, 2);
-    $HH3 = substr($profile, 18, 2);
     $MM3 = substr($profile, 20, 2);
 
     if (strcmp(substr($profile,7,1), "T") == 0) {
@@ -111,6 +111,7 @@
       $Enable3 = "true";
     }
     else {
+      $HH3 = substr($profile, 18, 2);
       $Enable3 = "false";
     }
     $OnTimer = substr($profile,22,2);
@@ -190,25 +191,26 @@
 			}
 
       if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-        exit;
+        
       }
+      else {
       /* crontab -r */
-			$out = shell_exec("/usr/bin/crontab -r");
-			echo $out;
-			$cron1 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - ";
-			$cron2 = "(crontab -l 2>/dev/null; echo \"" . $time2 . "\") | crontab - ";
-			$cron3 = "(crontab -l 2>/dev/null; echo \"" . $time3 . "\") | crontab - ";
-			$out = shell_exec($cron1);
-			echo $out;
-			$out = shell_exec($cron2);
-			echo $out;
-			$out = shell_exec($cron3);
-			echo $out;
-
+  			$out = shell_exec("/usr/bin/crontab -r");
+  			echo $out;
+  			$cron1 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - ";
+  			$cron2 = "(crontab -l 2>/dev/null; echo \"" . $time2 . "\") | crontab - ";
+  			$cron3 = "(crontab -l 2>/dev/null; echo \"" . $time3 . "\") | crontab - ";
+  			$out = shell_exec($cron1);
+  			echo $out;
+  			$out = shell_exec($cron2);
+  			echo $out;
+  			$out = shell_exec($cron3);
+  			echo $out;
+      }
 			// (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab -
 		}
-
-
+    sleep(5);
+}
 
 
 ?>
