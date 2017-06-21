@@ -21,6 +21,8 @@
     This is free software, and you are welcome to redistribute it
     under certain conditions.
 
+    run every minute
+    * * * * * /home/pi/thingscontrol/getprofile.sh
 
 */
         //include('./httpful.phar');
@@ -52,6 +54,11 @@
 
     $uri_profile = $uri_start . $profile . $param . $uri_end;
     //echo $uri_profile . "\n";
+    $fp = fsockopen("udp://8.8.8.8", 53, $errno, $errstr);
+    if (!$fp) {
+      echo "ERROR: $errno - $errstr<br />\n";
+      exit;
+    }
 
 //for (;;) {
 		echo "weekday " . date('w') . "\n";
@@ -76,12 +83,19 @@
         echo "\n" . "Error code = " . json_decode($response->code, true);
         exit;
       }
-      $response = \Httpful\Request::get($uri_profile)->send();
+      try {
+        $response = \Httpful\Request::get($uri_profile)->send();
+      }
+      catch(Exception $e) {
+        echo 'Message: ' . $e->getMessage();
+      }
       echo ".";
       sleep(1);
       $try++;
 
     } while (json_decode($response->code, true) != 200);
+
+
     $result = json_decode($response->body, true);
     $profile = $result[0]['payload'];
     $profile_lastUpdated = date('r', $result[0]['lastUpdated']);
