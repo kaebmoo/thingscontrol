@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 	int min;
 
 
-	printf("argc %d\n", argc);
+	//printf("argc %d\n", argc);
 	if (argc < 2) {
 		printf("Please input delay time (1-59 min.)\n");
 		exit(1);
@@ -67,11 +67,11 @@ int main(int argc, char *argv[])
 
 	if (min < 60) {
 		DELAY = (int) 60000 * min;
-		printf("Delay %d min, %s\n", DELAY/60000, argv[1]);
+		printf("Delay %d min, argv1: %s\n", DELAY/60000, argv[1]);
 	}
 	else {
 		DELAY = min;
-		printf("Delay %d second, %s\n", DELAY, argv[1]);
+		printf("Delay %d second, argv1: %s\n", DELAY/1000, argv[1]);
 	}
 
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers

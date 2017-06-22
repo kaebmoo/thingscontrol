@@ -157,7 +157,7 @@ int status_update(char *status)
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);
     //printf("return code %d\n", res);
-		printf("\n");
+		printf("\t");
 
     /* Check for errors */
     if(res != CURLE_OK)
