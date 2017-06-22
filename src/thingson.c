@@ -104,7 +104,7 @@ int currenttime()
 	// Format time, "ddd yyyy-mm-dd hh:mm:ss zzz"
 	ts = *localtime(&now);
 	strftime(buf, sizeof(buf), "%a %Y-%m-%d %H:%M:%S %Z", &ts);
-	printf("%s\n", buf);
+	printf("%s\t", buf);
 
 	return 0;
 }
