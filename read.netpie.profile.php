@@ -121,7 +121,7 @@
         $MM = substr($profile, 12, 2);
         $HH2 = substr($profile, 14, 2);
         $MM2 = substr($profile, 16, 2);
-	$HH3 = substr($profile, 18, 2);
+	      $HH3 = substr($profile, 18, 2);
         $MM3 = substr($profile, 20, 2);
 
         if (strcmp(substr($profile,7,1), "T") == 0) {

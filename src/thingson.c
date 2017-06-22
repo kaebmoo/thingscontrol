@@ -43,6 +43,7 @@
 #include <stdio.h>    // Used for printf() statements
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include <wiringPi.h> // Include WiringPi library!
 
@@ -54,6 +55,7 @@ int main(int argc, char *argv[])
 {
 	int DELAY = 1000;
 	int min;
+
 
 	printf("argc %d\n", argc);
 	if (argc < 2) {
@@ -72,17 +74,35 @@ int main(int argc, char *argv[])
 		printf("Delay %d second, %s\n", DELAY, argv[1]);
 	}
 
-
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 	pinMode(thingsOut, OUTPUT);
 
-	printf("On\n");
+	printf("On\t");
 	digitalWrite(thingsOut, HIGH);
 	status_update("ON");
+	currenttime();
+
 	delay(DELAY);
-	printf("Off\n");
+	printf("Off\t");
 	digitalWrite(thingsOut, LOW);
 	status_update("OFF");
+	currenttime();
+
+	return 0;
+}
+
+int currenttime()
+{
+	time_t     now;
+	struct tm  ts;
+	char       buf[80];
+
+	// Get current time
+	time(&now);
+	// Format time, "ddd yyyy-mm-dd hh:mm:ss zzz"
+	ts = *localtime(&now);
+	strftime(buf, sizeof(buf), "%a %Y-%m-%d %H:%M:%S %Z", &ts);
+	printf("%s\n", buf);
 
 	return 0;
 }
