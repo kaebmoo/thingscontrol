@@ -34,3 +34,12 @@ http-put.c - put value to netpie
 read_config.php - read configuration from file
 
 read.netpie.data.php - read value from netpie
+
+
+[hardware]
+
+raspberry pi zero w
+
+automation phat
+
+adafruit PiRTC PCF8523
