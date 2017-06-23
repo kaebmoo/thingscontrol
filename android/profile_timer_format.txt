@@ -11,3 +11,17 @@ FF2345F T 0909 01 FF2345F T 1111 01 FF2345F T 1206 01 FF2345F T 0909 01 FF2345F 
 (Week day: Sun Mon Tue Wed Thu Fri Sat:0-6,F=disable) (Enable: F=disable,1=on,0=off) (Time: HHMM=hour,minute) (On timer: min)
 
 FF2345FT090901FF2345FT111101FF2345FT120601FF2345FT090901FF2345FT111101FF2345FT120601FF2345FT111101FF2345FT120601
+
+
+$profile = array 
+(
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
+
+);
