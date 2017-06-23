@@ -56,11 +56,10 @@ int main(int argc, char *argv[])
 
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 	pinMode(thingsOut, OUTPUT);
-
-	printf("On\t");
-	digitalWrite(thingsOut, HIGH);
+	printf("Off\t");
+	digitalWrite(thingsOut, LOW);
 	currenttime();
-	status_update("ON");
+	status_update("OFF");
 
 
 	return 0;

@@ -53,6 +53,26 @@ int status_update(char *status);
 
 int main(int argc, char *argv[])
 {
+	int DELAY = 1000;
+	int min;
+
+
+	//printf("argc %d\n", argc);
+	if (argc < 2) {
+		printf("Please input delay time (1-59 min.)\n");
+		exit(1);
+	}
+
+	min = atoi(argv[1]);
+
+	if (min < 60) {
+		DELAY = (int) 60000 * min;
+		printf("Delay %d min, argv1: %s\n", DELAY/60000, argv[1]);
+	}
+	else {
+		DELAY = min;
+		printf("Delay %d second, argv1: %s\n", DELAY/1000, argv[1]);
+	}
 
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 	pinMode(thingsOut, OUTPUT);
@@ -61,6 +81,13 @@ int main(int argc, char *argv[])
 	digitalWrite(thingsOut, HIGH);
 	currenttime();
 	status_update("ON");
+
+
+	delay(DELAY);
+	printf("Off\t");
+	digitalWrite(thingsOut, LOW);
+	currenttime();
+	status_update("OFF");
 
 
 	return 0;
