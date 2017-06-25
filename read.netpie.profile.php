@@ -46,6 +46,9 @@
   $appkey = $ini_array['key'];
   $appsecret = $ini_array['secret'];
 
+  $profile_array = parse_ini_file("profile.conf");
+  $profile0 = $profile_array['profile'];
+
   //$uri_ = $uri . $app . $topic . $profile . $param . $key . ":" . $secret ;
 
 
@@ -61,7 +64,7 @@
     exit(1);
   }
 
-  $profile0 = "";
+
   //for (;;) {
   		echo "weekday " . date('w') . "\t" . date("r") . "\n";
   		$dayofweek = date('w');
@@ -114,6 +117,9 @@
       else {  // profile changed.
         $profile0 = $profile;
         $isProfileUpdated = 1;
+        $file = 'profile.conf';
+        $current = "profile = \"" . $profile . "\"";
+        file_put_contents($file, $current);
       }
 
       if ($isProfileUpdated == 1) {
