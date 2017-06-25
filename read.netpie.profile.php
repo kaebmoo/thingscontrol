@@ -62,7 +62,7 @@
   }
 
   $profile0 = "";
-  for (;;) {
+  //for (;;) {
   		echo "weekday " . date('w') . "\t" . date("r") . "\n";
   		$dayofweek = date('w');
 
@@ -178,6 +178,7 @@
     					$set_weekday = $set_weekday . $var_weekday[$i] . ",";
     			}
     		}
+        //unset($var_weekday);
 
     		if ($set_weekday == "") {
     			// user enable start time but all weekday is disabled.
@@ -239,8 +240,8 @@
     			// (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab -
     		} // weekday enable
       } // check isProfileUpdated
-      sleep(5);
+      //sleep(5);
 
-  }
+  //} // infinite loop
 
 ?>

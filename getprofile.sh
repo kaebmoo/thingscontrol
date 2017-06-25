@@ -1,3 +1,6 @@
 #!/bin/bash
-
-php /home/pi/thingscontrol/read.netpie.profile.php
+while true
+do
+  php /home/pi/thingscontrol/read.netpie.profile.php
+  sleep 5
+done
