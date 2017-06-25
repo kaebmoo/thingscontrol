@@ -44,7 +44,7 @@
   $uri = $ini_array['uri'];
   $app = $ini_array['app_id'];
   $topic = $ini_array['id'];
-  $profile_uri = $ini_array['8profile'];
+  $profile_uri = $ini_array['profile8'];
   $param = $ini_array['param'];
   $appkey = $ini_array['key'];
   $appsecret = $ini_array['secret'];
