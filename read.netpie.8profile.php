@@ -46,6 +46,9 @@
   $appkey = $ini_array['key'];
   $appsecret = $ini_array['secret'];
 
+  $profile_array = parse_ini_file("profile8.conf");
+  $profile0 = $profile_array['profile8'];
+
   //$uri_ = $uri . $app . $topic . $profile . $param . $key . ":" . $secret ;
 
 
@@ -57,11 +60,11 @@
 
   $fp = fsockopen("udp://8.8.8.8", 53, $errno, $errstr);
   if (!$fp) {
-    echo "ERROR: $errno - $errstr<br />\n";
+    echo "ERROR: $errno - $errstr<br />\t" . date("r") . "\n";
     exit(1);
   }
 
-  $profile0 = "";
+
   $profile = "";
   $profile8 = array
     (
@@ -76,8 +79,8 @@
     );
   $var_name = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat","Enable","HH", "MM", "OnTimer");
 
-  for (;;) {
-  		echo "weekday " . date('w') . "\n";
+  //for (;;) {
+  		echo "weekday " . date('w') . "\t" . date("r") . "\n";
   		$dayofweek = date('w');
 
       $isProfileUpdated = 0;
@@ -99,14 +102,14 @@
       $try = 0;
       do {
         if ($try > 2) {
-          echo "\n" . "Error code = " . json_decode($response->code, true);
+          echo "\n" . "Error code = " . json_decode($response->code, true) . "\t" . date("r") . "\n";
           exit(2);
         }
         try {
           $response = \Httpful\Request::get($uri_profile)->send();
         }
         catch(Exception $e) {
-          echo 'Message: ' . $e->getMessage();
+          echo 'Message: ' . $e->getMessage() . "\t" . date("r") . "\n";
           exit(1);
         }
         echo ".";
@@ -130,6 +133,9 @@
       else {  // profile changed.
         $profile0 = $profile;
         $isProfileUpdated = 1;
+        $file = 'profile8.conf';
+        $current = "profile8 = \"" . $profile . "\"";
+        file_put_contents($file, $current);
       }
 
       if ($isProfileUpdated == 1) {
@@ -286,8 +292,8 @@
         // (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab -
 
       } // check isProfileUpdated
-      sleep(5);
+      //sleep(5);
 
-  }
+  //} infinite loop
 
 ?>
