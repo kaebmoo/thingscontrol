@@ -57,13 +57,13 @@
 
   $fp = fsockopen("udp://8.8.8.8", 53, $errno, $errstr);
   if (!$fp) {
-    echo "ERROR: $errno - $errstr<br />\n";
+    echo "ERROR: $errno - $errstr<br />\t" . date("r") . "\n";
     exit(1);
   }
 
   $profile0 = "";
   for (;;) {
-  		echo "weekday " . date('w') . "\n";
+  		echo "weekday " . date('w') . "\t" . date("r") . "\n";
   		$dayofweek = date('w');
 
       $profile = "";
@@ -83,14 +83,14 @@
       $try = 0;
       do {
         if ($try > 2) {
-          echo "\n" . "Error code = " . json_decode($response->code, true);
+          echo "\n" . "Error code = " . json_decode($response->code, true) . "\t" . date("r") . "\n";
           exit(2);
         }
         try {
           $response = \Httpful\Request::get($uri_profile)->send();
         }
         catch(Exception $e) {
-          echo 'Message: ' . $e->getMessage();
+          echo 'Message: ' . $e->getMessage() . "\t" . date("r") . "\n";
           exit(1);
         }
         echo ".";
