@@ -53,7 +53,7 @@ int status_update(char *status);
 
 int main(int argc, char *argv[])
 {
-	int DELAY = 1000;
+	int DELAY;
 	int min;
 
 
