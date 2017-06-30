@@ -69,18 +69,20 @@
 
 
   $profile = "";
+
   $profile8 = array
-    (
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
-    );
-  $var_name = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat","Enable","HH", "MM", "OnTimer");
+  (
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12")
+  );
+
+  $var_name = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat","Enable","HH", "MM", "OnTimer", "OnTimerHour", "Repeat", "Day", "Month");
 
   //for (;;) {
   		echo "weekday " . date('w') . "\t" . date("r") . "\n";
@@ -144,14 +146,27 @@
       if ($isProfileUpdated == 1) {
         $extractProfile = array("","","","","","","","");
 
-        for ($row=0; $row < 8; $row++) {
-          // 11 variables 14 characters 8 profiles.
-          $extractProfile[$row] = substr($profile,$row*14,14);
+        for ($row=0; $row < 8; $row++) { // 8 profiles.
+          // 15 variables 21 characters 8 profiles.
+          // FFFFFFF F 0909 1000 1 3112
+          // <day><enable><hh mm><mm hh><repeat><day month>
+          // (Week day: Sun Mon Tue Wed Thu Fri Sat:0-6,F=disable) (Enable: F=disable,T=Timer,1=on,0=off) (start time: HHMM=hour,minute) (On timer: min,hour) (repeat=1, once=0) (day,month)
+
+          $extractProfile[$row] = substr($profile,$row*21,21); // 21 column per profile.
           $index = 0;
           foreach($var_name as $VariableName) {
             if ($index < 8) {
           	 $GLOBALS[$VariableName] = substr($extractProfile[$row],$index++,1);
              $profile8[$row][$VariableName] = $GLOBALS[$VariableName];
+            }
+            else if ($index >= 8 && $index < 16){
+              $GLOBALS[$VariableName] = substr($extractProfile[$row],$index,2);
+              $index = $index + 2;
+              $profile8[$row][$VariableName] = $GLOBALS[$VariableName];
+            }
+            else if ($index == 16) {
+              $GLOBALS[$VariableName] = substr($extractProfile[$row],$index++,1);
+              $profile8[$row][$VariableName] = $GLOBALS[$VariableName];
             }
             else {
               $GLOBALS[$VariableName] = substr($extractProfile[$row],$index,2);

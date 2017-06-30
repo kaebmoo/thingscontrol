@@ -1,12 +1,15 @@
+First Version
 1234567-890-1234-5678-9012-34
 +++++++++++++++++++++++++++++
 FF2345F TTT 0909 1111 1206 01
+<day>   <enable> <hhmm> <hhmm> <hhmm> <ontimer>
  
+Version 2
            1           2             3           4            5            6            7            8           9             0           1
 1234567-8-9012-34-5678901-2-3456-78-9012345-6-7890-12-3456789-0-1234-56-7890123-4-5678-90-1234567-8-9012-34-5678901-2-3456-78-9012345-6-7890-12
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 FF2345F T 0909 01 FF2345F T 1111 01 FF2345F T 1206 01 FF2345F T 0909 01 FF2345F T 1111 01 FF2345F T 1206 01 FF2345F T 1111 01 FF2345F T 1206 01
-
+14 column
 
 (Week day: Sun Mon Tue Wed Thu Fri Sat:0-6,F=disable) (Enable: F=disable,T=Timer,1=on,0=off) (Time: HHMM=hour,minute) (On timer: min)
 
@@ -25,3 +28,34 @@ array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "S
 array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00"),
 
 );
+
+
+New Version 
+
+1234567-8-9012-3456-7-8901
+++++++++++++++++++++++++++
+FFFFFFF F 0909 1000 1 3112
+< day ><enable><hh mm><mm hh><repeat><day month>
+           1            2            3            4           5             6          7             8           9            0            1            2            3            4            5            6
+1234567-8-9012-3456-7-8901-2345678-9-0123-4567-8-9012-3456789-0-1234-5678-9-0123-4567890-1-2345-6789-0-1234-5678901-2-3456-7890-1-2345-6789012-3-4567-8901-2-3456-7890123-4-5678-9012-3-4567-8901234-5-6789-0123-4-5678
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+FF2345F T 0909 0010 1 3112 FF2345F T 0909 0010 1 3112 FF2345F T 0909 0010 1 3112 FF2345F T 0909 0010 1 3112 FF2345F T 0909 0010 1 3112 FF2345F T 0909 0010 1 3112 FF2345F T 0909 0010 1 3112 FF2345F T 0909 0010 1 3112
+21 column
+
+(Week day: Sun Mon Tue Wed Thu Fri Sat:0-6,F=disable) (Enable: F=disable,T=Timer,1=on,0=off) (start time: HHMM=hour,minute) (On timer: min,hour) (repeat=1, once=0) (day,month) 
+
+FF2345FT0909001013112FF2345FT0909001013112FF2345FT0909001013112FF2345FT0909001013112FF2345FT0909001013112FF2345FT0909001013112FF2345FT0909001013112FF2345FT0909001013112
+
+$profile = array 
+(
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
+array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12")
+);
+
+curl -X PUT "https://api.netpie.io/topic/ThingsControl/seal/profile8?retain&auth=29Q8aH99CemAL0E:k4a6jwlmhDpUqp33hn5vWSdLV" -d "FFFFFFFF0909100013112FFFFFFFF0909100013112FFFFFFFF0909100013112FFFFFFFF0909100013112FFFFFFFF0909100013112FFFFFFFF0909100013112FFFFFFFF0909100013112FFFFFFFF0909100013112"
