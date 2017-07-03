@@ -83,6 +83,7 @@
   );
 
   $var_name = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat","Enable","HH", "MM", "OnTimer", "OnTimerHour", "Repeat", "Day", "Month");
+  $var_weekday = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
 
   //for (;;) {
   		echo "weekday " . date('w') . "\t" . date("r") . "\n";
@@ -90,18 +91,6 @@
 
       $isProfileUpdated = 0;
 
-      /*
-      $HH = 0;
-  		$MM = 0;
-  		$HH2 = 0;
-  		$MM2 = 0;
-  		$HH3 = 0;
-  		$MM3 = 0;
-  		$Enable = "false";
-  		$Enable2 = "false";
-  		$Enable3 = "false";
-  		$OnTimer = 5;
-      */
 
       // GET topic from netpie read "8profile"
       $try = 0;
@@ -181,135 +170,133 @@
             echo $key[$val] . " ";
           echo "\n";
         }
+        unset($key);
 
-        /*
-        $HH = substr($profile, 10, 2);
-        $MM = substr($profile, 12, 2);
-        $HH2 = substr($profile, 14, 2);
-        $MM2 = substr($profile, 16, 2);
-	      $HH3 = substr($profile, 18, 2);
-        $MM3 = substr($profile, 20, 2);
-        */
+        foreach ($profile8 as $key) {
+          if (strcmp($key['Enable'], "F") != 0) {
+            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 
-        /*
-        if (strcmp(substr($profile,7,1), "T") == 0) {
-          $Enable = "true";
-        }
-        else {
-          $Enable = "false";
-        }
-        if (strcmp(substr($profile,8,1), "T") == 0) {
-          $Enable2 = "true";
-        }
-        else {
-          $Enable2 = "false";
-        }
-        if (strcmp(substr($profile,9,1), "T") == 0) {
-          $Enable3 = "true";
-        }
-        else {
-          $HH3 = substr($profile, 18, 2);
-          $Enable3 = "false";
-        }
-        $OnTimer = substr($profile,22,2);
-
-        echo $HH . ":" . $MM . " " . $HH2 . ":" . $MM2 . " " . $HH3 . ":" . $MM3 . "\n";
-        echo $Enable . " " . $Enable2 . " " . $Enable3 . "\n";
-        echo $OnTimer . "\n";
-
-
-    		$Sun = "false";
-    		$Mon = "false";
-    		$Tue = "false";
-    		$Wed = "false";
-    		$Thu = "false";
-    		$Fri = "false";
-    		$Sat = "false";
-
-    		$var_weekday = array($Sun,$Mon,$Tue,$Wed,$Thu,$Fri,$Sat);
-
-
-        for ($i = 0; $i < 7; $i++)
-        {
-            if (strcmp(substr($profile, $i, 1), "F") == 0) {
-              $var_weekday[$i] = "false";
             }
             else {
-              $var_weekday[$i] = substr($profile, $i, 1);
+              $out = shell_exec("/usr/bin/crontab -r");
+        			echo $out;
             }
-            //echo $var_weekday[$i] . "\n";
+
+
+            $min = (int) $key['OnTimer'];
+            $min_hour = (int) $key['OnTimerHour'] * 60;
+            $ontimer =  $min + $min_hour;
+            if(strcmp($key['Enable'], "T") == 0) {
+              // timer mode call thingsontimer with timer (minute)
+              if(strcmp($key['Repeat'], "1") == 0) {
+                $set_weekday = "";
+
+                foreach ($var_weekday as $weekday) {
+                  if(strcmp($key[$weekday],"F") != 0) {
+                    $set_weekday = $set_weekday . $key[$weekday] . ",";
+                  }
+                }
+                if ($set_weekday == "") {
+            			// user enable start time but all weekday is disabled.
+            			echo "All weekday is disabled.\n";
+            		}
+                else {
+                  //delete "," at the end of string.
+                  $set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";
+                  echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " >> /var/log/thingsontimer.log 2>&1\n";
+                  $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " >> /var/log/thingsontimer.log 2>&1\n";
+                }
+
+              }
+              else {
+                echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " >> /var/log/thingsontimer.log 2>&1\n";
+                $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " >> /var/log/thingsontimer.log 2>&1\n";
+              }
+              if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+
+              }
+              else {
+                  $cron = "(crontab -l 2>/dev/null; echo \"" . $time . "\") | crontab - ";
+                  $out = shell_exec($cron);
+            			echo $out;
+              }
+
+            }
+            else if (strcmp($key['Enable'], "1") == 0) {
+              // on mode call thinson at time.
+              if(strcmp($key['Repeat'], "1") == 0) {
+
+                $set_weekday = "";
+                foreach ($var_weekday as $weekday) {
+                  if(strcmp($key[$weekday],"F") != 0) {
+                    $set_weekday = $set_weekday . $key[$weekday] . ",";
+                  }
+                }
+                if ($set_weekday == "") {
+                  // user enable start time but all weekday is disabled.
+                  echo "All weekday is disabled.\n";
+                }
+                else {
+                  //delete "," at the end of string.
+                  $set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";
+                  echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingson >> /var/log/thingsontimer.log 2>&1\n";
+                  $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingson >> /var/log/thingsontimer.log 2>&1\n";
+                }
+
+              }
+              else {
+                echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingson >> /var/log/thingsontimer.log 2>&1\n";
+                $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingson >> /var/log/thingsontimer.log 2>&1\n";
+              }
+              if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+
+              }
+              else {
+                  $cron = "(crontab -l 2>/dev/null; echo \"" . $time . "\") | crontab - ";
+                  $out = shell_exec($cron);
+                  echo $out;
+              }
+            }
+            else if (strcmp($key['Enable'], "0") == 0) {
+                // off mode, call thingsoff at time.
+                if(strcmp($key['Repeat'], "1") == 0) {
+
+                  $set_weekday = "";
+                  foreach ($var_weekday as $weekday) {
+                    if(strcmp($key[$weekday],"F") != 0) {
+                      $set_weekday = $set_weekday . $key[$weekday] . ",";
+                    }
+                  }
+                  if ($set_weekday == "") {
+                    // user enable start time but all weekday is disabled.
+                    echo "All weekday is disabled.\n";
+                  }
+                  else {
+                    //delete "," at the end of string.
+                    $set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";
+                    echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsoff >> /var/log/thingsontimer.log 2>&1\n";
+                    $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsoff >> /var/log/thingsontimer.log 2>&1\n";
+                  }
+
+                }
+                else {
+                  echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsoff >> /var/log/thingsontimer.log 2>&1\n";
+                  $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsoff >> /var/log/thingsontimer.log 2>&1\n";
+                }
+                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+
+                }
+                else {
+                    $cron = "(crontab -l 2>/dev/null; echo \"" . $time . "\") | crontab - ";
+                    $out = shell_exec($cron);
+                    echo $out;
+                }
+            }
+
+          }
         }
 
-    		$set_weekday = "";
-    		for ($i = 0; $i < 7; $i++) {
-    			if ($var_weekday[$i] != "false") {
-    					$set_weekday = $set_weekday . $var_weekday[$i] . ",";
-    			}
-    		}
 
-    		if ($set_weekday == "") {
-    			// user enable start time but all weekday is disabled.
-    			echo "All weekday is disabled.\n";
-    		}
-    		else {
-    			$time1 = "";
-    			$time2 = "";
-    			$time3 = "";
-
-    			//delete "," at the end of string.
-    			$set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";
-    			// if start time is enalbed. we set the weekday in crontab.
-
-    			if ($Enable == "true") {
-    				$cron_weekday = "";
-    				//echo $MM . " " . $HH . " * * ";
-    				$cron_mm_hh = $MM . " " . $HH . " * * ";
-    				$cron_weekday = $cron_mm_hh . $set_weekday;
-    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-    				$time1 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-
-    			}
-
-    			if ($Enable2 == "true") {
-    				$cron_weekday = "";
-    				$cron_mm2_hh2 = $MM2 . " " . $HH2 . " * * ";
-    				$cron_weekday = $cron_mm2_hh2 . $set_weekday;
-    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-    				$time2 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-
-    			}
-    			if ($Enable3 == "true") {
-    				$cron_weekday = "";
-    				$cron_mm3_hh3 = $MM3 . " " . $HH3 . " * * ";
-    				$cron_weekday = $cron_mm3_hh3 . $set_weekday;
-    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-    				$time3 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-
-    			}
-
-          if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-
-          }
-          else {
-
-      			$out = shell_exec("/usr/bin/crontab -r");
-      			echo $out;
-      			$cron1 = "(crontab -l 2>/dev/null; echo \"" . $time1 . "\") | crontab - ";
-      			$cron2 = "(crontab -l 2>/dev/null; echo \"" . $time2 . "\") | crontab - ";
-      			$cron3 = "(crontab -l 2>/dev/null; echo \"" . $time3 . "\") | crontab - ";
-      			$out = shell_exec($cron1);
-      			echo $out;
-      			$out = shell_exec($cron2);
-      			echo $out;
-      			$out = shell_exec($cron3);
-      			echo $out;
-          }
-
-    		} // weekday enable
-        */
-        // (crontab -l 2>/dev/null; echo "*/5 * * * * /path/to/job -with args") | crontab -
-
-      } // check isProfileUpdated
       //sleep(5);
 
   //} infinite loop
