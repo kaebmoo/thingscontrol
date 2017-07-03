@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 
 	// millisecond.
 	if (argc > 2) {
-		if (strcmp(argv[2], "ms")) {
+		if (strcmp(argv[2], "ms") == 0) {
 			DELAY = min;
 			printf("Delay %d second, argv1: %s\n", DELAY/1000, argv[1]);
 		}
