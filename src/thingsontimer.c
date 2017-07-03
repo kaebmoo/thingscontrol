@@ -69,9 +69,6 @@ int main(int argc, char *argv[])
 		printf("On timer = 0, exit\n");
 		exit(1);
 	}
-	else if (min > 1439) {
-		min = 1439;
-	}
 
 	// millisecond.
 	if (argc > 2) {
@@ -82,6 +79,9 @@ int main(int argc, char *argv[])
 	}
 
 	if (argc == 2) {
+		if (min > 1439) {
+			min = 1439;
+		}
 		DELAY = (int) 60000 * min;
 		printf("Delay %d min, argv1: %s\n", DELAY/60000, argv[1]);
 	}
