@@ -93,6 +93,7 @@ int main(int argc, char *argv[])
 	printf("On\t");
 	status_update("ON");
 	currenttime();
+	printf("\n");
 	digitalWrite(thingsOut, HIGH);
 
 	delay(DELAY);
@@ -100,6 +101,7 @@ int main(int argc, char *argv[])
 	printf("Off\t");
 	digitalWrite(thingsOut, LOW);
 	currenttime();
+	printf("\n");
 	status_update("OFF");
 
 	return 0;
