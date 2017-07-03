@@ -172,17 +172,15 @@
         }
         unset($key);
 
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+
+        }
+        else {
+          $out = shell_exec("/usr/bin/crontab -r");
+          echo $out;
+        }
         foreach ($profile8 as $key) {
           if (strcmp($key['Enable'], "F") != 0) {
-            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-
-            }
-            else {
-              $out = shell_exec("/usr/bin/crontab -r");
-        			echo $out;
-            }
-
-
             $min = (int) $key['OnTimer'];
             $min_hour = (int) $key['OnTimerHour'] * 60;
             $ontimer =  $min + $min_hour;
