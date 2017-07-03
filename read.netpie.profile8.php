@@ -118,7 +118,7 @@
       $profile_lastUpdated = date('r', $result[0]['lastUpdated']);
       echo "\n";
       echo $profile . "\n";
-      echo $profile_lastUpdated . "\n";
+      echo "Last updated : " . $profile_lastUpdated . "\n";
 
       if(strcmp($profile, $profile0) == 0) {
         $isProfileUpdated = 0;
