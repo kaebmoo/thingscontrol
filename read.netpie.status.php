@@ -92,12 +92,12 @@
       echo $status . "\n";
       echo "Last updated : " . $status_lastUpdated . "\n";
 
-      if(strcmp($status, "ON") == 0) {
+      if( (strcmp($status, "ON") == 0) || (strcmp($status, "1") == 0)) {
         echo "Relay ON\n";
         $out = shell_exec("/home/pi/thingscontrol/bin/thingson");
         echo $out;
       }
-      else if (strcmp($status, "OFF") == 0) {
+      else if ( (strcmp($status, "OFF") == 0) || (strcmp($status, "0") == 0) ) {
         echo "Relay OFF\n";
         $out = shell_exec("/home/pi/thingscontrol/bin/thingsoff");
         echo $out;
