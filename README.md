@@ -7,7 +7,7 @@ use C, PHP to PUT GET topic from netpie service.
 
 use cURL (https://github.com/curl/curl) and json-c (https://github.com/json-c/json-c) to call rest api and parse json aray. code is test on raspberry pi 3 and pi zero with automation phat.
 
-you can set profile or 8 profile by android app (create from app inventor) the thingscontrol app is set profile and send it to netpie. on the other side (raspberry pi) I create script to run infinite loop to read profile from netpie and create cronjob (php) to turn on/off relay by calling command in /bin (you can use gpio command from wiringPi instead C program). and onoff_relay.sh is script run for check status if the status is "ON" (user press switch in thingscontrol mobile app) the script is call command to turn on relay (switch on) or the other hand is turn off. 
+you can set profile or 8 profiles by android app (create from app inventor) the thingscontrol app is set profile and send it to netpie. on the other side (raspberry pi) I create script to run infinite loop to read profile from netpie and create cronjob (php) to turn on/off relay by calling command in /bin (you can use gpio command from wiringPi instead C program). and onoff_relay.sh is script run for check status if the status is "ON" (user press switch in thingscontrol mobile app) the script is call command to turn on relay (switch on) or the other hand is turn off. 
 
 [thingscontrol]
 
