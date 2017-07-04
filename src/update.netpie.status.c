@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
 
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 
-	for(;;) {
+	//for(;;) {
 		if (digitalRead(RELAY) == 1)
 		{
 			printf("Relay Status: ON \n");
@@ -210,6 +210,6 @@ int main(int argc, char *argv[])
 			status_update("OFF");
 		}
 		delay(DELAY);
-	}
+	//}
 	return 0;
 }
