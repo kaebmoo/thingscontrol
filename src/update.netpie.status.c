@@ -88,7 +88,7 @@ int status_update(char *status)
   /* https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=key:secret */
   char *update_status;
 
-  update_status = malloc(strlen(status)) + 1;
+  update_status = malloc(strlen(status)+1) ;
   strcpy(update_status, "");
   strcpy(update_status, status);
 
