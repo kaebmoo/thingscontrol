@@ -120,7 +120,8 @@
         $isProfileUpdated = 1;
         $file = 'profile.conf';
         $current = "profile = \"" . $profile . "\"";
-        file_put_contents($file, $current);
+        $ok = file_put_contents($file, $current);
+        echo $ok;
       }
 
       if ($isProfileUpdated == 1) {
