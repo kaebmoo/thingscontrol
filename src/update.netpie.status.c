@@ -172,6 +172,7 @@ int status_update(char *status)
   free(AppKey.key);
   free(AppKey.secret);
   free(AppKey.uri);
+	free(update_status);
 
   return 0;
 }

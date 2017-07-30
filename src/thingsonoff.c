@@ -186,6 +186,11 @@ int read_config()
     //printf("Parameter %s \nuri %s\n", AppKey.param, AppKey.uri);
     //printf("uri: %s\n", AppKey.uri);
 
+  free(AppKey.key);
+  free(AppKey.secret);
+  free(AppKey.param);
+  free(AppKey.uri);
+
   return 0;
 }
 
