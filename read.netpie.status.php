@@ -40,7 +40,7 @@
   */
 
   // Parse without sections
-  $ini_array = parse_ini_file("thingscontrol.conf");
+  $ini_array = parse_ini_file("/home/pi/thingscontrol/thingscontrol.conf");
   $uri = $ini_array['uri'];
   $app = $ini_array['app_id'];
   $topic = $ini_array['id'];

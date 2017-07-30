@@ -38,7 +38,7 @@
   */
 
   // Parse without sections
-  $ini_array = parse_ini_file("thingscontrol.conf");
+  $ini_array = parse_ini_file("/home/pi/thingscontrol/thingscontrol.conf");
   $uri = $ini_array['uri'];
   $app = $ini_array['app_id'];
   $topic = $ini_array['id'];
@@ -47,7 +47,7 @@
   $appkey = $ini_array['key'];
   $appsecret = $ini_array['secret'];
 
-  $profile_array = parse_ini_file("profile.conf");
+  $profile_array = parse_ini_file("/home/pi/thingscontrol/profile.conf");
   $profile0 = $profile_array['profile'];
 
   //$uri_ = $uri . $app . $topic . $profile . $param . $key . ":" . $secret ;
@@ -118,7 +118,7 @@
       else {  // profile changed.
         $profile0 = $profile;
         $isProfileUpdated = 1;
-        $file = 'profile.conf';
+        $file = '/home/pi/thingscontrol/profile.conf';
         $current = "profile = \"" . $profile . "\"";
         $ok = file_put_contents($file, $current);
         echo $ok . "bytes";
