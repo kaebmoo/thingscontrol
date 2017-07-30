@@ -50,3 +50,7 @@ raspberry pi zero w
 automation phat
 
 adafruit PiRTC PCF8523
+
+
+
+ภาษาไทยอ่านที่นี่ https://github.com/kaebmoo/thingscontrol/wiki 
