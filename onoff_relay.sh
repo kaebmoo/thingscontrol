@@ -7,5 +7,5 @@ do
 done
 exit 0
 
-# update status every 2 second.
+# update status every 5 second.
 # /home/pi/thingscontrol/bin/update.netpie.status 2
