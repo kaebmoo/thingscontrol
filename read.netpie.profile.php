@@ -121,7 +121,8 @@
         $file = 'profile.conf';
         $current = "profile = \"" . $profile . "\"";
         $ok = file_put_contents($file, $current);
-        echo $ok;
+        echo $ok . "bytes";
+        echo "\n";
       }
 
       if ($isProfileUpdated == 1) {
