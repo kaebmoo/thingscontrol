@@ -15,7 +15,7 @@ thingscontrol.conf - configuration file (uri, app id, topic, key, secret . . .)
 
 read.netpie.profile - read timer profile (topic = profile) from netpie. the timer profile is day of week, start time (3 profiles, enable/disable), on time (minute 1-59) in pattern 0123456TTTHHMMHHMMHHMM01 ; 0123456 is day of week (Sun, Mon, Tue, Wed, Thu, Fri, Sat) int on enable and F for disable, TTT is start time enable or disable (F), HHMM is star time, and 01 is on timer (minute). and generate crontab for schedule timer on raspberry pi.
 
-read.netpie.profile8 - read timer profile (8 profiles support). disable, timer, on, off, repeat, or once. FFFFFFF F 0909 1000 1 3112 <day 0-6><enable F,T,0,1><hhmm><mmhh><repeat/once><day month>
+read.netpie.profile8 - read timer profile (8 profiles support). disable, timer, on, off, repeat, or once. FFFFFFF F 0909 1000 1 3112 0 <day 0-6><enable F,T,0,1><hhmm><mmhh><repeat/once><day month><relay port>
 
 read.netpie.status.php - read topic status from netpie if "ON" or "1" turn on relay, else if "OFF" or "0" turn off relay.
 
