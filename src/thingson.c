@@ -47,21 +47,49 @@
 
 #include <wiringPi.h> // Include WiringPi library!
 
-const int thingsOut = 16; /* automation phat BCM 16 GPIO 27 physical 36 */
+#include "thingscontrol.h"
 
-int status_update(char *status);
 
 int main(int argc, char *argv[])
 {
+	int output = 0;
+	int port;
 
+	if (argc < 2) {
+		printf("Please provide relay (output) number. Example: %s 0\n", argv[0]);
+		exit(1);
+	}
+
+	output = abs(atoi(argv[1]));
+	if (output > 3) {
+		output = 0;
+	}
+	port = output;
+	
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 	pinMode(thingsOut, OUTPUT);
+	pinMode(thingsOut1, OUTPUT);
+	pinMode(thingsOut2, OUTPUT);
+	pinMode(thingsOut3, OUTPUT);
 
 	printf("On\t");
-	digitalWrite(thingsOut, HIGH);
-	currenttime();
-	status_update("ON");
+	switch (output) {
+		case 0 :
+			digitalWrite(thingsOut, HIGH);
+			break;
+		case 1 :
+			digitalWrite(thingsOut1, HIGH);
+			break;
+		case 2 :
+			digitalWrite(thingsOut2, HIGH);
+			break;
+		case 3 :
+			digitalWrite(thingsOut3, HIGH);
+			break;
+	}
 
+	currenttime();
+	status_update("ON", port);
 
 	return 0;
 }

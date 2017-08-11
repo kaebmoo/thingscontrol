@@ -207,8 +207,8 @@
     				//echo $MM . " " . $HH . " * * ";
     				$cron_mm_hh = $MM . " " . $HH . " * * ";
     				$cron_weekday = $cron_mm_hh . $set_weekday;
-    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-    				$time1 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
+    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " 0 >> /var/log/thingsontimer.log 2>&1\n";
+    				$time1 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " 0 >> /var/log/thingsontimer.log 2>&1\n";
 
     			}
 
@@ -216,16 +216,16 @@
     				$cron_weekday = "";
     				$cron_mm2_hh2 = $MM2 . " " . $HH2 . " * * ";
     				$cron_weekday = $cron_mm2_hh2 . $set_weekday;
-    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-    				$time2 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
+    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " 0 >> /var/log/thingsontimer.log 2>&1\n";
+    				$time2 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " 0 >> /var/log/thingsontimer.log 2>&1\n";
 
     			}
     			if ($Enable3 == "true") {
     				$cron_weekday = "";
     				$cron_mm3_hh3 = $MM3 . " " . $HH3 . " * * ";
     				$cron_weekday = $cron_mm3_hh3 . $set_weekday;
-    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
-    				$time3 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " >> /var/log/thingsontimer.log 2>&1\n";
+    				echo $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " 0 >> /var/log/thingsontimer.log 2>&1\n";
+    				$time3 = $cron_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $GLOBALS["OnTimer"] . " 0 >> /var/log/thingsontimer.log 2>&1\n";
 
     			}
 

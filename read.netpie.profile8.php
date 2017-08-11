@@ -72,17 +72,17 @@
 
   $profile8 = array
   (
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12"),
-    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12")
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12", "Output"=>"0"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12", "Output"=>"0"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12", "Output"=>"0"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12", "Output"=>"0"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12", "Output"=>"0"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12", "Output"=>"0"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12", "Output"=>"0"),
+    array("Sun"=>"F", "Mon"=>"F", "Tue"=>"F", "Wed"=>"F", "Thu"=>"F", "Fri"=>"F", "Sat"=>"F", "Enable"=>"F", "HH"=>"00", "MM"=>"00", "OnTimer"=>"00", "OnTimerHour"=>"00", "Repeat"=>"1", "Day"=>"01", "Month"=>"12", "Output"=>"0")
   );
 
-  $var_name = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat","Enable","HH", "MM", "OnTimer", "OnTimerHour", "Repeat", "Day", "Month");
+  $var_name = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat","Enable","HH", "MM", "OnTimer", "OnTimerHour", "Repeat", "Day", "Month", "Output");
   $var_weekday = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
 
   //for (;;) {
@@ -136,12 +136,12 @@
         $extractProfile = array("","","","","","","","");
 
         for ($row=0; $row < 8; $row++) { // 8 profiles.
-          // 15 variables 21 characters 8 profiles.
-          // FFFFFFF F 0909 1000 1 3112
-          // <day><enable><hh mm><mm hh><repeat><day month>
-          // (Week day: Sun Mon Tue Wed Thu Fri Sat:0-6,F=disable) (Enable: F=disable,T=Timer,1=on,0=off) (start time: HHMM=hour,minute) (On timer: min,hour) (repeat=1, once=0) (day,month)
+          // 16 variables 22 characters 8 profiles.
+          // FFFFFFF F 0909 1000 1 3112 0
+          // <day><enable><hh mm><mm hh><repeat><day month><output>
+          // (Week day: Sun Mon Tue Wed Thu Fri Sat:0-6,F=disable) (Enable: F=disable,T=Timer,1=on,0=off) (start time: HHMM=hour,minute) (On timer: min,hour) (repeat=1, once=0) (day,month) (output relay)
 
-          $extractProfile[$row] = substr($profile,$row*21,21); // 21 column per profile.
+          $extractProfile[$row] = substr($profile,$row*22,22); // 22 column per profile.
           $index = 0;
           foreach($var_name as $VariableName) {
             if ($index < 8) {
@@ -157,9 +157,14 @@
               $GLOBALS[$VariableName] = substr($extractProfile[$row],$index++,1);
               $profile8[$row][$VariableName] = $GLOBALS[$VariableName];
             }
-            else {
+            else if ($index >= 17 && $index < 21){
               $GLOBALS[$VariableName] = substr($extractProfile[$row],$index,2);
               $index = $index + 2;
+              $profile8[$row][$VariableName] = $GLOBALS[$VariableName];
+            }
+            else {
+              $GLOBALS[$VariableName] = substr($extractProfile[$row],$index,1);
+              $index = $index + 1;
               $profile8[$row][$VariableName] = $GLOBALS[$VariableName];
             }
           }
@@ -184,6 +189,8 @@
             $min = (int) $key['OnTimer'];
             $min_hour = (int) $key['OnTimerHour'] * 60;
             $ontimer =  $min + $min_hour;
+            $output = $key['Output'];
+
             if(strcmp($key['Enable'], "T") == 0) {
               // timer mode call thingsontimer with timer (minute)
               if(strcmp($key['Repeat'], "1") == 0) {
@@ -201,14 +208,14 @@
                 else {
                   //delete "," at the end of string.
                   $set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";
-                  echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " >> /var/log/thingsontimer.log 2>&1\n";
-                  $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " >> /var/log/thingsontimer.log 2>&1\n";
+                  echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
+                  $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
                 }
 
               }
               else {
-                echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " >> /var/log/thingsontimer.log 2>&1\n";
-                $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " >> /var/log/thingsontimer.log 2>&1\n";
+                echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
+                $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsontimer " . $ontimer . " " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
               }
               if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 
@@ -237,14 +244,14 @@
                 else {
                   //delete "," at the end of string.
                   $set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";
-                  echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingson >> /var/log/thingsontimer.log 2>&1\n";
-                  $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingson >> /var/log/thingsontimer.log 2>&1\n";
+                  echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingson " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
+                  $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingson " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
                 }
 
               }
               else {
-                echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingson >> /var/log/thingsontimer.log 2>&1\n";
-                $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingson >> /var/log/thingsontimer.log 2>&1\n";
+                echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingson " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
+                $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingson " .$output . " >> /var/log/thingsontimer.log 2>&1\n";
               }
               if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 
@@ -272,14 +279,14 @@
                   else {
                     //delete "," at the end of string.
                     $set_weekday = substr($set_weekday, 0, strlen($set_weekday)-1) . "\t";
-                    echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsoff >> /var/log/thingsontimer.log 2>&1\n";
-                    $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsoff >> /var/log/thingsontimer.log 2>&1\n";
+                    echo $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsoff " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
+                    $time = $key['MM'] . " " . $key['HH'] .  " * * " . $set_weekday . "/home/pi/thingscontrol/bin/thingsoff " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
                   }
 
                 }
                 else {
-                  echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsoff >> /var/log/thingsontimer.log 2>&1\n";
-                  $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsoff >> /var/log/thingsontimer.log 2>&1\n";
+                  echo $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsoff " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
+                  $time = $key['MM'] . " " . $key['HH'] . " " . $key['Day'] . " " . $key['Month'] . " * " . "/home/pi/thingscontrol/bin/thingsoff " . $output . " >> /var/log/thingsontimer.log 2>&1\n";
                 }
                 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 

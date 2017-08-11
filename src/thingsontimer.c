@@ -47,19 +47,21 @@
 
 #include <wiringPi.h> // Include WiringPi library!
 
-const int thingsOut = 16; /* automation phat BCM 16 GPIO 27 physical 36 */
+#include "thingscontrol.h"
 
-int status_update(char *status);
+
 
 int main(int argc, char *argv[])
 {
 	int DELAY;
 	int min;
+	int output = 0;
+	int port;
 
 	DELAY = 1000;
 	//printf("argc %d\n", argc);
-	if (argc < 2) {
-		printf("Please input delay time (min.). Example: %s 1\n", argv[0]);
+	if (argc < 3) {
+		printf("Please input delay time (min.) and output port. Example: %s 1 0\n", argv[0]);
 		exit(1);
 	}
 
@@ -71,17 +73,22 @@ int main(int argc, char *argv[])
 	}
 
 	// millisecond.
-	if (argc > 2) {
-		if (strcmp(argv[2], "ms") == 0) {
+	if (argc > 3) {
+		if (strcmp(argv[3], "ms") == 0) {
 			DELAY = min;
 			printf("Delay %d second, argv1: %s\n", DELAY/1000, argv[1]);
 		}
 	}
 
-	if (argc == 2) {
+	if (argc == 3) {
 		if (min > 1439) {
 			min = 1439;
 		}
+		output = abs(atoi(argv[2]));
+		if (output > 3) {
+			output = 0;
+		}
+		port = output;
 		DELAY = (int) 60000 * min;
 		printf("Delay %d min, argv1: %s\n", DELAY/60000, argv[1]);
 	}
@@ -89,20 +96,72 @@ int main(int argc, char *argv[])
 
 	wiringPiSetupGpio(); // Initialize wiringPi -- using Broadcom pin numbers
 	pinMode(thingsOut, OUTPUT);
+	pinMode(thingsOut1, OUTPUT);
+	pinMode(thingsOut2, OUTPUT);
+	pinMode(thingsOut3, OUTPUT);
 
-	printf("On\t");
-	status_update("ON");
-	currenttime();
-	printf("\n");
-	digitalWrite(thingsOut, HIGH);
+	switch(output) {
+		case 0 :
+			printf("On\t");
+			status_update("ON", port);
+			currenttime();
+			printf("\n");
+			digitalWrite(thingsOut, HIGH);
 
-	delay(DELAY);
+			delay(DELAY);
 
-	printf("Off\t");
-	digitalWrite(thingsOut, LOW);
-	currenttime();
-	printf("\n");
-	status_update("OFF");
+			printf("Off\t");
+			digitalWrite(thingsOut, LOW);
+			currenttime();
+			printf("\n");
+			status_update("OFF", port);
+		 	break;
+		case 1 :
+			printf("On\t");
+			status_update("ON", port);
+			currenttime();
+			printf("\n");
+			digitalWrite(thingsOut1, HIGH);
+
+			delay(DELAY);
+
+			printf("Off\t");
+			digitalWrite(thingsOut1, LOW);
+			currenttime();
+			printf("\n");
+			status_update("OFF", port);
+			break;
+		case 2 :
+			printf("On\t");
+			status_update("ON", port);
+			currenttime();
+			printf("\n");
+			digitalWrite(thingsOut2, HIGH);
+
+			delay(DELAY);
+
+			printf("Off\t");
+			digitalWrite(thingsOut2, LOW);
+			currenttime();
+			printf("\n");
+			status_update("OFF", port);
+			break;
+		case 3 :
+			printf("On\t");
+			status_update("ON", port);
+			currenttime();
+			printf("\n");
+			digitalWrite(thingsOut3, HIGH);
+
+			delay(DELAY);
+
+			printf("Off\t");
+			digitalWrite(thingsOut3, LOW);
+			currenttime();
+			printf("\n");
+			status_update("OFF", port);
+			break;
+	}
 
 	return 0;
 }

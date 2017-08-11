@@ -60,7 +60,7 @@
 
 #include <libconfig.h>
 
-int status_update(char *status)
+int status_update(char *status, int port)
 {
 
 	config_t cfg;
@@ -85,12 +85,16 @@ int status_update(char *status)
   const char *app_id = ""; 	/* /ThingsControl */
   const char *id = "";		/* /seal */
   const char *topic = "";	/* /status?retain& */
+	const char *statusx = ""; /* status 0-3 for relay & ouput */
   /* https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=key:secret */
-  char *update_status;
+  char *update_status, port_status[2];
 
   update_status = malloc(strlen(status)+1);
   strcpy(update_status, "");
   strcpy(update_status, status);
+
+	snprintf(port_status, 2, "%d", port);
+	printf("Port Status %s\n", port_status);
 
   config_init(&cfg);
     /* Read the file. If there is an error, report it and exit. */
@@ -108,13 +112,15 @@ int status_update(char *status)
 		&& config_lookup_string(&cfg, "uri", &uri)
 		&& config_lookup_string(&cfg, "app_id", &app_id)
 		&& config_lookup_string(&cfg, "id", &id)
-		&& config_lookup_string(&cfg, "topic", &topic) ) {
+		&& config_lookup_string(&cfg, "topic", &topic) /* can remove we use statusx insteed */
+		&& config_lookup_string(&cfg, "statusx", &statusx) ) {
 			//printf("key: %s %s %s %s %s %s\n\n", uri, app_id, id, topic, key, secret);
   }
-  else
+  else {
     fprintf(stderr, "No 'key' setting in configuration file.\n");
-
-
+		exit(1);
+	}
+		/* statusx + output port number eg. status0, status1 */
 
   int alloc = 0;
 
@@ -123,7 +129,8 @@ int status_update(char *status)
   alloc += strlen(param) + strlen(key) + strlen(":") + strlen(secret);
   alloc++;
   AppKey.param = malloc(alloc);
-  AppKey.uri = malloc(strlen(uri)+strlen(app_id)+strlen(id)+strlen(topic)+strlen(param)+strlen(key)+strlen(":")+strlen(secret)+1);
+  // AppKey.uri = malloc(strlen(uri)+strlen(app_id)+strlen(id)+strlen(topic)+strlen(param)+strlen(key)+strlen(":")+strlen(secret)+1);
+	AppKey.uri = malloc(strlen(uri)+strlen(app_id)+strlen(id)+strlen(statusx)+strlen(port_status)+strlen("?retain&")+strlen(param)+strlen(key)+strlen(":")+strlen(secret)+1);
   strcpy(AppKey.uri, "");
 
   strcpy(AppKey.key, key);
@@ -141,13 +148,14 @@ int status_update(char *status)
        data. */
 
     AppKey.param = strcat(strcat(strcat(AppKey.param, AppKey.key),":"), AppKey.secret);
-    AppKey.uri = strcat(strcat(strcat(strcat(strcat(AppKey.uri,uri), app_id), id), topic), AppKey.param);
+    AppKey.uri = strcat(strcat(strcat(strcat(strcat(strcat(strcat(AppKey.uri,uri), app_id), id), statusx), port_status), "?retain&"), AppKey.param);
     //printf("Parameter %s \nuri %s\n", AppKey.param, AppKey.uri);
 
 	/*
     curl_easy_setopt(curl, CURLOPT_URL, "https://api.netpie.io/topic/ThingsControl/seal/status?retain&auth=key:secret");
     */
     curl_easy_setopt(curl, CURLOPT_URL, AppKey.uri);
+		printf("URL : %s\n", AppKey.uri);
 
     /* Now specify the PUT data */
 
