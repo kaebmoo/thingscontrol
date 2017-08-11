@@ -78,6 +78,11 @@ int main(int argc, char *argv[])
 			DELAY = min;
 			printf("Delay %d second, argv1: %s\n", DELAY/1000, argv[1]);
 		}
+		output = abs(atoi(argv[2]));
+		if (output > 3) {
+			output = 0;
+		}
+		port = output;
 	}
 
 	if (argc == 3) {
